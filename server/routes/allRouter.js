@@ -65,4 +65,22 @@ router.get('/questions/:id', (req, res) => {
         })
 }); // end router.GET
 
+// PUT
+router.put('/newInfo', (req, res) => {
+    let update = req.body;
+    console.log(updateMovie);
+    let queryText =
+    `UPDATE "followupQuestions" SET "questions" = $1, "issues_id" = $2, "solution" = $3
+    FROM "issues"
+    WHERE "followupQuestions".id = "issues".id;`;
+    pool.query(queryText, [update.questions, update.issues_id, update.solution, update.id])
+        .then(results => {
+            res.sendStatus(200);
+        })
+        .catch(error => {
+            console.log(error);
+            res.sendStatus(500);
+        })
+}); // end router.PUT
+
 module.exports = router

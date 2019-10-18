@@ -7,7 +7,16 @@ function* rootSaga() {
     yield takeEvery('GET_Q', getQ);
     yield takeEvery('POST_ISSUE', postIssue);
     yield takeEvery('DEL_DATA', DelData);
+    yield takeEvery('NEW_INFO', newIfno);
 }
+
+function* newIfno(action){
+    try{
+      yield axios.put('/allData/newInfo/', action.payload);
+    }catch(error){
+      console.log('error updating new info', error);
+    } // end try
+  } // end newInfo saga
 
 function* postIssue(action){
     try{

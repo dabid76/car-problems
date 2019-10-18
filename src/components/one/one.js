@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 // const headsOrTails = () => (Math.random() < 0.5);
 
 let nextQ;
-let solutionToQ;
+// let solutionToQ;
 
 class one extends Component {
     constructor(props) {

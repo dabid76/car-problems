@@ -8,7 +8,8 @@ import { connect } from 'react-redux';
 // and then instead of `props.user.username` you could use `user.username`
 class UserPage extends Component {
   componentDidMount(id) {
-    this.props.dispatch({ type: 'GET_DATA' });
+    this.props.dispatch({ type: 'GET_DATA', payload: this.props.match.params.id });
+    
     // this.props.dispatch(action);
   }
   state = {
@@ -22,7 +23,7 @@ handleNameChange = event => {
   console.log('event happended', event.target.value)
   this.setState({
     issue: {
-          ...this.state.issue,
+          ...this.state.issues,
           issues: event.target.value,
       }
   });
@@ -49,8 +50,9 @@ removeIssue = (id) => {
   });
 }
 
-editIssue = () => {
-  this.props.history.push(`/Edit/${this.props.match.params.id}`)
+editIssue = (id) => {
+  console.log('edit btn click', id)
+  this.props.history.push(`/Edit/${id}`)
 }
 
   render(props){
