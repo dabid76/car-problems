@@ -5,29 +5,27 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('GET_DATA', getData);
     yield takeEvery('GET_Q', getQ);
-    // yield takeEvery('NEW_Q', newQ);
-    // yield takeEvery('GET_S', getS);
+    yield takeEvery('POST_ISSUE', postIssue);
+    yield takeEvery('DEL_DATA', DelData);
 }
 
-// function* newQ(action){
-//     try{
-//       yield axios.get('/allData/newQuestions/', action.payload);
-//       yield put({type: 'SET_Q'})
-//     }catch(error){
-//       console.log('error getting new question', error);
-//     }
-//   }
+function* postIssue(action){
+    try{
+      yield axios.post('/allData/newIssue/', action.payload);
+      yield put({type: 'GET_DATA'})
+    }catch(error){
+      console.log('error psoting new issue', error);
+    }
+  }
 
-//   function* getS(action){
-//     try {
-//         console.log('action', action);
-        
-//         let response = yield axios.get(`/allData/solution/${action.payload}`)
-//         yield put({type: 'SET_S', payload: response.data})
-//     } catch (error) {
-//         console.log('error with getting the solutions', error); 
-//     } // end try
-// } // end getDetails saga
+  function* DelData(id) {
+    try {
+      yield axios.delete(`/allData/delete/${id.payload}`);
+      yield put({ type: 'GET_DATA'});
+    } catch (error) {
+      console.log('error while delete issue', error);
+    }
+  }
 
 function* getData(){
     try {

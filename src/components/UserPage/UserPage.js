@@ -11,23 +11,79 @@ class UserPage extends Component {
     this.props.dispatch({ type: 'GET_DATA' });
     // this.props.dispatch(action);
   }
+  state = {
+    issue: {
+        id: '',
+        issues: ''
+    }
+}
+
+handleNameChange = event => {
+  console.log('event happended', event.target.value)
+  this.setState({
+    issue: {
+          ...this.state.issue,
+          issues: event.target.value,
+      }
+  });
+}
+
+addNewIssue = event => {
+  event.preventDefault();
+  this.props.dispatch({ type: 'POST_ISSUE', payload: this.state.issue })
+  this.setState({
+    issue: {
+          id: this.state.issue.id + 1,
+          issues: '',
+      }
+  });
+}
+
+removeIssue = (id) => {
+  // event.preventDefault();
+  console.log(id);
+
+  this.props.dispatch({
+      type: 'DEL_DATA',
+      payload: id
+  });
+}
+
+editIssue = () => {
+  this.props.history.push(`/Edit/${this.props.match.params.id}`)
+}
 
   render(props){
     // const UserPage = props;
     return(
-  <div>
+  <>
     <h1 id="welcome">
       { this.props.user.username }
     </h1>
-    <ul>
-    {/* <p>{JSON.stringify(this.props.reduxStore)}</p> */}
+                    <input type='text' value={this.state.issue.issues} onChange={this.handleNameChange} />
+                    <button onClick={this.addNewIssue}>Add New Issue</button>
+      <table>
+        <thead>
+          <tr>
+            <th>
 
-                {this.props.reduxStore.data.data.map(item=>{
-                return <li key={item.id} value={item.id}>{item.issues}</li>    
-                })}
-            </ul>
+            </th>
+          </tr>
+        </thead>
+    <tbody>
+          {this.props.reduxStore.data.data.map((item) =>(
+                <tr key={item.id}>
+                <td>{item.issues}</td>
+                <td>
+                <button  onClick={()=> {this.editIssue(item.id)}}>Edit</button>
+                <button  onClick={()=> {this.removeIssue(item.id)}}>Delete</button>
+                </td>
+                </tr>
+               ))}
+            </tbody>
+            </table>
     {/* <LogOutButton className="log-in" /> */}
-  </div>
+  </>
 
 )}}
 

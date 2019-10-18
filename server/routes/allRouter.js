@@ -18,27 +18,31 @@ router.get('/', (req, res) => {
     });
 }); // end router.GET
 
-// GET
-router.get('/solution/:id', (req, res) => {
-    let movieId = req.params.id;
-    console.log('/film/' + movieId);
-    let queryText = 
-
-    `SELECT "followupQuestions".solution 
-    FROM "followupQuestions"
-    WHERE "followupQuestions".id = $1;`;
-
-    pool.query(queryText, [movieId])
-        .then(results => {
-            console.log(results.rows);
-            res.send(results.rows)
-        })
-        .catch(error => {
-            console.log('error with the answer', error);
-            res.sendStatus(500);
-        })
+// POST
+router.post('/newIssue', (req, res) => {
+    const newIssue = req.body;
+    const queryText = `INSERT INTO "issues" ("issues")
+                      VALUES ($1)`;
+    const queryValues = [
+    newIssue.issues,
+    ];
+    pool.query(queryText, queryValues)
+      .then(() => { res.sendStatus(201); })
+      .catch((err) => {
+        console.log('Error completing posting new issue in query', err);
+        res.sendStatus(500);
+      });
   });
 
+router.delete('/delete/:id', (req, res) => {
+    const queryText = `DELETE FROM "issues" WHERE "id" = $1;`;
+    pool.query(queryText, [req.params.id])
+      .then(() => { res.sendStatus(200); })
+      .catch((err) => {
+        console.log('Error delete SELECT issue query', err);
+        res.sendStatus(500);
+      });
+  });
 
 // GET
 router.get('/questions/:id', (req, res) => {
