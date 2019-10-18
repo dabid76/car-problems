@@ -4,18 +4,23 @@ import {connect} from 'react-redux';
 // const headsOrTails = () => (Math.random() < 0.5);
 
 let nextQ;
+let solutionToQ;
 
 class one extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          questions: []
+          questions: [],
+          solution: []
         };
         this.noBtn = this.noBtn.bind(this);
+        this.yesBtn = this.yesBtn.bind(this);
+
       }
 
     componentDidMount = () => {
         this.props.dispatch({type: 'GET_Q', payload: this.props.match.params.id });
+        // this.props.dispatch({type: 'GET_S', payload: this.props.match.params.id });
 
         // this.props.dispatch({ type: 'GET_Q', payload: this.state.value });
 
@@ -23,8 +28,9 @@ class one extends Component {
         //     questions: this.props.reduxStore.questions.questions,
         // })
 
-        console.log('log', this.state.question);
-        console.log('new log', this.props.reduxStore.questions.questions);
+        // console.log('log', this.state.question);
+        console.log('new question', this.props.reduxStore.questions.questions);
+        console.log('solution', this.props.reduxStore.questions.solution);
 
  
     this.getQuestions();
@@ -33,10 +39,13 @@ class one extends Component {
     getQuestions = () =>{
         // this.props.dispatch({type: 'GET_Q', payload: this.props.match.params.id });
         // this.props.dispatch({type: this.props.reduxStore.questions.questions});
-        console.log('id:', this.state.id);
+        // console.log('id:', this.state.id);
         console.log('new log', this.props.reduxStore.questions.questions);
+        console.log('new solution', this.props.reduxStore.questions.solution);
+
         this.setState({
             questions: this.props.reduxStore.questions.questions,
+            solution: this.props.reduxStore.questions.questions.solution,
         })
         // this.noBtn = this.noBtn.bind(this);
     }
@@ -44,12 +53,26 @@ class one extends Component {
 
     
     yesBtn = (id) => {
-        console.log ('finding the solution', this.props.reduxStore.solution);
+        console.log ('finding the solution', this.props.reduxStore.questions.questions[0].solution);
 
-    if ( this.yesBtn === this.yesBtn ) {
-    //   console.log ('finding the solution', this.state.questions.solution);
+        // let index = this.props.reduxStore.questions.questions.solution.map(x => {
+        //     return x.Id;
+        //   }).indexOf(1);
+        //   this.props.reduxStore.questions.questions.solution.shift(index, 1)
+        //   this.setState({
+        //     ...this.state,
+        //     solution: nextQ,
+        // })
+        console.log('solution', this.props.reduxStore.questions.questions[0].solution);
 
-    }
+    // if ( this.yesBtn === this.yesBtn ) {
+    //     this.setState({
+    //         ...this.state,
+    //         solution: solutionToQ,
+    //     })
+    //   return this.props.reduxStore.questions.questions.solution
+
+    // }
   }
 
   
@@ -74,26 +97,32 @@ class one extends Component {
         })
           
           console.log('nextQ1', this.props.reduxStore.questions.questions);
-        console.log('nextQ', nextQ)
+        // console.log('nextQ', nextQ)
     }
 
     
       render() {
         // let secondQ = this.props.reduxStore.questions.questions;
-console.log('log1', this.props.reduxStore.questions.questions[0])
+console.log('log0', this.props.reduxStore.questions.questions[0])
 console.log('log1', this.props.reduxStore.questions.questions[1])
-console.log('log1', this.props.reduxStore.questions.questions[2])
+console.log('log2', this.props.reduxStore.questions.questions[2])
+// console.log('log3', this.props.reduxStore.questions.questions.solution)
+
 // console.log('secondQ[0]', secondQ[0])
-console.log('local state:', this.state.questions);
+// console.log('local state:', this.state.questions);
 // let nextQ;
 
     let issueQ = this.props.reduxStore.questions.questions.map((item, id) => {
         if( id == 0){
       nextQ = <h1 key={item.id}>{item.questions}</h1>
         }
-        // return (<ul><li><span>{item.questions[0]}</span></li></ul>)
 
     })
+    // let issueQA = this.props.reduxStore.questions.questions.solution.map((item, id) => {
+    //     if( id == 0){
+    // solutionToQ = <h1 key={item.id}>{item.solution}</h1>
+    //     }
+    // })
       
         return (
 
@@ -107,11 +136,15 @@ console.log('local state:', this.state.questions);
                 <h1>{this.state.questions[0].questions}</h1>} */}
             {issueQ}
             {nextQ}
+            {/* {issueQA}
+            {solutionToQ} */}
             
 
             <button onClick={this.yesBtn}>Yes</button> 
             <button onClick={this.noBtn} pizza={this.state}>No</button>
-            <p>{JSON.stringify(this.props.reduxStore.questions.questions)}</p>
+            <p>{JSON.stringify(this.props.reduxStore.questions.questions[0])}</p>
+            {/* <p>{JSON.stringify(this.props.reduxStore.solutions)}</p> */}
+
           </div>
     
 

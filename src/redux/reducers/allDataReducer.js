@@ -15,20 +15,15 @@ const questions = (state = [], action) => {
     switch (action.type) {
         case 'SET_Q':
             return action.payload;
-
-
-        // case 'NEW_Q':
-        //     return action.payload[];
         default:
             return state;
     } // end switch
 } // end genres
 
-// const newQuestions = (state = [], action) => {
+// const solutions = (state = [], action) => {
 //     switch (action.type) {
-//         case 'SET_Q':
+//         case 'SET_S':
 //             return action.payload;
-
 //         default:
 //             return state;
 //     } // end switch
@@ -37,5 +32,5 @@ const questions = (state = [], action) => {
 export default combineReducers({
     data,
     questions,
-    // newQuestions
+    // solutions
   });

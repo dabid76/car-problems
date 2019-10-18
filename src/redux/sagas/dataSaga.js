@@ -5,18 +5,29 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('GET_DATA', getData);
     yield takeEvery('GET_Q', getQ);
-    yield takeEvery('NEW_Q', newQ);
-
+    // yield takeEvery('NEW_Q', newQ);
+    // yield takeEvery('GET_S', getS);
 }
 
-function* newQ(action){
-    try{
-      yield axios.get('/allData/newQuestions/', action.payload);
-      yield put({type: 'SET_Q'})
-    }catch(error){
-      console.log('error getting new question', error);
-    }
-  }
+// function* newQ(action){
+//     try{
+//       yield axios.get('/allData/newQuestions/', action.payload);
+//       yield put({type: 'SET_Q'})
+//     }catch(error){
+//       console.log('error getting new question', error);
+//     }
+//   }
+
+//   function* getS(action){
+//     try {
+//         console.log('action', action);
+        
+//         let response = yield axios.get(`/allData/solution/${action.payload}`)
+//         yield put({type: 'SET_S', payload: response.data})
+//     } catch (error) {
+//         console.log('error with getting the solutions', error); 
+//     } // end try
+// } // end getDetails saga
 
 function* getData(){
     try {
