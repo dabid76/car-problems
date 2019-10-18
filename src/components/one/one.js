@@ -1,71 +1,94 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-const headsOrTails = () => (Math.random() < 0.5);
+// const headsOrTails = () => (Math.random() < 0.5);
 
 
 class one extends Component {
+    state = {
 
-  state = {
-    value: ''
-  };
+       id: 1,  
+    //    question: 'hi',
+       questions: []
+    }
 
-  componentDidMount() {
-    // const action = {type: 'GET_DATA'};
-    this.props.dispatch({ type: 'GET_Q', payload: this.props.match.params.id  })
-  }
+    componentDidMount() {
+        // this.props.dispatch({ type: 'GET_Q', payload: this.state.value });
+
+        // this.setState({
+        //     questions: this.props.reduxStore.questions.questions,
+        // })
+
+        console.log('log', this.state.question);
+        console.log('new log', this.props.reduxStore.questions.questions);
+
+ 
+    this.getQuestions();
     
-  handleSubmit = (id) => {
+    }
+    getQuestions = () =>{
+        this.props.dispatch({type: 'GET_Q', payload: this.props.match.params.id });
+        // this.props.dispatch({type: this.props.reduxStore.questions.questions});
+        console.log('id:', this.state.id);
+        console.log('new log', this.props.reduxStore.questions.questions);
+        this.setState({
+            questions: this.props.reduxStore.questions.questions,
+        })
+    }
+
+
+    
+    yesBtn = (id) => {
     console.log('btn getting click', this.props.match.params.id)
-    // alert('Need New Brakes');
-    // this.props.dispatch({ type: 'GET_DATA', payload: id });
-    // if ( this.state.value === true ) {
-    //   console.log ('Going Out!');
-    // } else if ( this.state.value !== true )  {
-    //   console.log ('ChillZone');
-    // }
+
+    if ( this.yesBtn === this.yesBtn ) {
+      console.log (this.props.reduxStore.questions.questions);
+
+    }
   }
 
-    // this.props.history.push('/')
-    // event.preventDefault();
   
+    noBtn = (pizza) => {
+        console.log('removing product from cart. State:', this.state);
+        let index = this.state.questions.indexOf(pizza);
+        let nextQ = this.state.questions
+        nextQ.splice(index, 1)
+        this.setState({
+            ...this.state,
+            questions: nextQ,
+        })
+
+        console.log('nextQ', nextQ)
+    }
     
       render() {
-
-        let qAnswers;
-
-        let answers = this.props.reduxStore.questions.map((qA, id) => {
-            if( id === 0) {
-              qAnswers = <p key={qA.id}>{qA.questions}</p>;
-
-            } else {
-              id++
-            }
-        }) // end map
+        let secondQ = this.props.reduxStore.questions.questions;
+console.log('log1', this.props.reduxStore.questions.questions[0])
+console.log('log1', this.props.reduxStore.questions.questions[1])
+console.log('log1', this.props.reduxStore.questions.questions[2])
+console.log('secondQ[0]', secondQ[0])
+console.log('local state:', this.state.questions);
         return (
 
 
-        
           
           <div className="movieDetailsDiv">
-          {answers}
-            {qAnswers}
-            <button onClick={this.handleSubmit} value='1'>Yes</button> 
-            <button onClick={this.handleSubmit} value='2'>No</button>
+              {/* <form onSubmit={this.noBtn}>
+                  <input type='submit' value="no" />
+              </form> */}
+              {this.state.questions.length == 0 ? '':
+                <h1>{this.state.questions[0].questions}</h1>}
+            {/* {qAnswers} */}
+            {/* <ul>
+                {this.state.questions.map((genre, i)=>{
+                return <li>{genre.questions}</li>    
+                })}
+            </ul> */}
+            <button onClick={this.yesBtn} pizza={this.state}>Yes</button> 
+            <button onClick={this.noBtn}>No</button>
+            <p>{JSON.stringify(this.props.reduxStore.questions.questions)}</p>
           </div>
     
-
-    
-            // <>
-            //  <h1>
-            // Need New Brakes
-            // </h1>
-            // <p>
-                // Problem fix?
-            // </p> 
-            
-            // <button onClick={this.handleSubmit}>Yes</button> 
-            // </> 
 
         );
       }

@@ -5,7 +5,18 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('GET_DATA', getData);
     yield takeEvery('GET_Q', getQ);
+    yield takeEvery('NEW_Q', newQ);
+
 }
+
+function* newQ(action){
+    try{
+      yield axios.get('/allData/newQuestions/', action.payload);
+      yield put({type: 'SET_Q'})
+    }catch(error){
+      console.log('error getting new question', error);
+    }
+  }
 
 function* getData(){
     try {
@@ -18,15 +29,15 @@ function* getData(){
 
   function* getQ(action){
     try {
+        console.log('action', action);
+        
         let response = yield axios.get(`/allData/questions/${action.payload}`)
         yield put({type: 'SET_Q', payload: response.data})
     } catch (error) {
-        console.log('error with getting the answers', error); 
+        console.log('error with getting the questions', error); 
     } // end try
 } // end getDetails saga
 
-// Create sagaMiddleware
-// const sagaMiddleware = createSagaMiddleware();
 
 
 
