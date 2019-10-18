@@ -6,10 +6,9 @@ import {connect} from 'react-redux';
 
 class one extends Component {
     state = {
-
-       id: 1,  
-    //    question: 'hi',
-       questions: []
+    //    id: 0,  
+       questions: [],
+       
     }
 
     componentDidMount() {
@@ -39,27 +38,33 @@ class one extends Component {
 
     
     yesBtn = (id) => {
-    console.log('btn getting click', this.props.match.params.id)
+        console.log ('finding the solution', this.props.reduxStore.questions.questions);
 
     if ( this.yesBtn === this.yesBtn ) {
-      console.log (this.props.reduxStore.questions.questions);
+    //   console.log ('finding the solution', this.state.questions.solution);
 
     }
   }
 
   
     noBtn = (pizza) => {
-        console.log('removing product from cart. State:', this.state);
-        let index = this.state.questions.indexOf(pizza);
-        let nextQ = this.state.questions
-        nextQ.splice(index, 1)
-        this.setState({
-            ...this.state,
-            questions: nextQ,
-        })
-
-        console.log('nextQ', nextQ)
+        // console.log('removing product from cart. State:', this.state);
+        // let index = this.state.questions.indexOf(pizza);
+        // let nextQ = this.state.questions
+        // nextQ.splice(index, 1)
+        // this.setState({
+        //     ...this.state,
+        //     questions: nextQ,
+        // })
+        let index = this.state.questions.map(x => {
+            return x.Id;
+          }).indexOf(1);
+          
+          this.state.questions.shift(index, 1);
+          console.log('questions', this.state.questions);
+        // console.log('nextQ', nextQ)
     }
+
     
       render() {
         let secondQ = this.props.reduxStore.questions.questions;
@@ -84,8 +89,8 @@ console.log('local state:', this.state.questions);
                 return <li>{genre.questions}</li>    
                 })}
             </ul> */}
-            <button onClick={this.yesBtn} pizza={this.state}>Yes</button> 
-            <button onClick={this.noBtn}>No</button>
+            <button onClick={this.yesBtn}>Yes</button> 
+            <button onClick={this.noBtn} pizza={this.state}>No</button>
             <p>{JSON.stringify(this.props.reduxStore.questions.questions)}</p>
           </div>
     
