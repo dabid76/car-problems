@@ -11,6 +11,7 @@ class WhatsWrong extends Component {
   }
 
   state = {
+    value: '',
     // newQ: {
     //     id: 0,
     // }
@@ -25,10 +26,11 @@ class WhatsWrong extends Component {
     
   handleSubmit = (id) => {
     console.log('this is happening: ', this.state.value)
+    // this.props.dispatch({ type: 'GET_Q', payload: this.state.value });
 
     this.props.history.push(`/one/${this.state.value}`)
 
-      this.props.dispatch({ type: 'GET_Q', payload: this.state.value });
+      // this.props.dispatch({ type: 'GET_Q', payload: this.state.value });
 
   }
     

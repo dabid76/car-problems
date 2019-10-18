@@ -24,18 +24,18 @@ const questions = (state = [], action) => {
     } // end switch
 } // end genres
 
-const newQuestions = (state = [], action) => {
-    switch (action.type) {
-        case 'SET_Q':
-            return action.payload;
+// const newQuestions = (state = [], action) => {
+//     switch (action.type) {
+//         case 'SET_Q':
+//             return action.payload;
 
-        default:
-            return state;
-    } // end switch
-} // end genres
+//         default:
+//             return state;
+//     } // end switch
+// } // end genres
 
 export default combineReducers({
     data,
     questions,
-    newQuestions
+    // newQuestions
   });
