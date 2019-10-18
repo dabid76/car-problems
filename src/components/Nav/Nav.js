@@ -18,7 +18,7 @@ const Nav = (props) => (
       </Link>
         <Link className="nav-link" to="/UserPage">
           
-{props.user.id ? '' : 'Admin Login'}
+{props.user.id ? 'Edit' : 'Admin Login'}
         </Link>
 
       {/* Show the link to the info page and the logout button if the user is logged in */}
