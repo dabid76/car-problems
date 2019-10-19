@@ -7,17 +7,20 @@ import { connect } from 'react-redux';
 // const UserPage = ({ user }) => (
 // and then instead of `props.user.username` you could use `user.username`
 class UserPage extends Component {
-  componentDidMount(id) {
-    this.props.dispatch({ type: 'GET_DATA', payload: this.props.match.params.id });
     
-    // this.props.dispatch(action);
-  }
   state = {
     issue: {
         id: '',
         issues: ''
     }
 }
+
+  componentDidMount(id) {
+    // this.props.dispatch({type: 'GET_Q', payload: this.props.match.params.id });
+
+    this.props.dispatch({ type: 'GET_DATA' });
+}
+
 
 handleNameChange = event => {
   console.log('event happended', event.target.value)

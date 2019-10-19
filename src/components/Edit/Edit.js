@@ -7,10 +7,10 @@ class Edit extends Component {
         constructor(props) {
             super(props);
             this.state = {
-                newInfo: {
-                id: '',
-              questions: [],
-              solution: []
+                editInfo: {
+                // id: '',
+              questions: '',
+              solution: ''
                 }
             }
     
@@ -28,8 +28,8 @@ class Edit extends Component {
     infoDetails = () => {
         {this.props.reduxStore.questions.questions.map((movieInfo) => {
             this.setState({
-                newInfo: {
-                    id: movieInfo.id,
+                editInfo: {
+                    // id: movieInfo.id,
                     questions: movieInfo.questions,
                     solution: movieInfo.solution,
                 }
@@ -38,6 +38,7 @@ class Edit extends Component {
     } // end infoDetails
 
     saveBtn = (id) => {
+        console.log('is it working?', this.state.editInfo)
         this.props.dispatch({type:'NEW_INFO', payload: this.state.editInfo})
         this.props.history.push(`/UserPage`);
     } // end saveBtn
@@ -46,19 +47,19 @@ class Edit extends Component {
         console.log('in handleChange')
 
         this.setState({
-            newInfo:{
-              ...this.state,
+            editInfo:{
+              ...this.state.editInfo,
              [propertyName]: event.target.value,
             }
         }) // end setState
     } // end handleChange
 
     handleNameChange = (event, propertyName) => {
-        console.log('in handleChange')
+        console.log('in handleNameChange')
 
         this.setState({
-            newInfo:{
-              ...this.state.questions,
+            editInfo:{
+              ...this.state.editInfo,
              [propertyName]: event.target.value,
             }
         }) // end setState
@@ -75,6 +76,7 @@ class Edit extends Component {
             color="primary"
             onClick={this.cancelBtn}
           >
+              
             Cancel
           </Button>
           <Button
@@ -90,7 +92,7 @@ class Edit extends Component {
 
                     {/* <button onClick={this.addNew}>Add</button> */}
                 <br/>
-                <br/>
+                <p>{JSON.stringify(this.props.reduxStore.questions.questions)}</p>
  
 {this.props.reduxStore.questions.questions.map((item) =>(
     <tr >
@@ -101,6 +103,7 @@ class Edit extends Component {
     </td>
     </tr>
 ))}
+
             </div>
         ) // end return
     } // end render

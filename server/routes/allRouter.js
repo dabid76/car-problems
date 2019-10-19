@@ -68,11 +68,12 @@ router.get('/questions/:id', (req, res) => {
 // PUT
 router.put('/newInfo', (req, res) => {
     let update = req.body;
-    console.log(updateMovie);
+    console.log(update);
     let queryText =
-    `UPDATE "followupQuestions" SET "questions" = $1, "issues_id" = $2, "solution" = $3
+    `UPDATE "followupQuestions" 
+    SET "questions" = $1, "issues_id" = $2, "solution" = $3
     FROM "issues"
-    WHERE "followupQuestions".id = "issues".id;`;
+    WHERE "followupQuestions".id = $4;`;
     pool.query(queryText, [update.questions, update.issues_id, update.solution, update.id])
         .then(results => {
             res.sendStatus(200);
