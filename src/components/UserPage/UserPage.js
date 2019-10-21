@@ -34,6 +34,7 @@ handleNameChange = event => {
 
 addNewIssue = event => {
   event.preventDefault();
+  console.log('btn is getting click', this.state.issue)
   this.props.dispatch({ type: 'POST_ISSUE', payload: this.state.issue })
   this.setState({
     issue: {
@@ -55,6 +56,8 @@ removeIssue = (id) => {
 
 editIssue = (id) => {
   console.log('edit btn click', id)
+  this.props.dispatch({type: 'GET_Q', payload: id });
+
   this.props.history.push(`/Edit/${id}`)
 }
 

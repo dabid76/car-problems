@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 router.post('/newIssue', (req, res) => {
     const newIssue = req.body;
     const queryText = `INSERT INTO "issues" ("issues")
-                      VALUES ($1)`;
+                      VALUES ($1);`;
     const queryValues = [
     newIssue.issues,
     ];
@@ -30,6 +30,25 @@ router.post('/newIssue', (req, res) => {
       .then(() => { res.sendStatus(201); })
       .catch((err) => {
         console.log('Error completing posting new issue in query', err);
+        res.sendStatus(500);
+      });
+  });
+
+  // POST
+router.post('/newQA', (req, res) => {
+    const newQA = req.body;
+    const queryText = 
+    `INSERT INTO "followupQuestions" ("questions", "issues_id", "solution")
+    VALUES ($1, $2, $3);`;
+    const queryValues = [
+        newQA.questions,
+        newQA.issues_id,
+        newQA.solution,
+    ];
+    pool.query(queryText, queryValues)
+      .then(() => { res.sendStatus(201); })
+      .catch((err) => {
+        console.log('Error completing posting new questions and solutions in query', err);
         res.sendStatus(500);
       });
   });
@@ -68,13 +87,13 @@ router.get('/questions/:id', (req, res) => {
 // PUT
 router.put('/newInfo', (req, res) => {
     let update = req.body;
+    // let id = req.body.id
     console.log(update);
     let queryText =
     `UPDATE "followupQuestions" 
-    SET "questions" = $1, "issues_id" = $2, "solution" = $3
-    FROM "issues"
-    WHERE "followupQuestions".id = $4;`;
-    pool.query(queryText, [update.questions, update.issues_id, update.solution, update.id])
+    SET "questions" = $1, "solution" = $2
+    WHERE "followupQuestions".id = $3;`;
+    pool.query(queryText, [update.questions, update.solution, update.id])
         .then(results => {
             res.sendStatus(200);
         })

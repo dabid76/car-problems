@@ -8,6 +8,16 @@ function* rootSaga() {
     yield takeEvery('POST_ISSUE', postIssue);
     yield takeEvery('DEL_DATA', DelData);
     yield takeEvery('NEW_INFO', newIfno);
+    yield takeEvery('POST_NEW', postNew);
+}
+
+function* postNew(action){
+  try{
+    yield axios.post('/allData/newQA/', action.payload);
+    yield put({type: 'SET_Q'})
+  }catch(error){
+    console.log('error psoting new issue', error);
+  }
 }
 
 function* newIfno(action){
