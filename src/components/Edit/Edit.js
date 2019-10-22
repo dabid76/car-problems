@@ -38,9 +38,9 @@ class Edit extends Component {
 
     }
 
-    // componentWillMount(){
-    //     this.infoDetails();
-    // }    
+    componentWillMount(){
+        this.infoDetails();
+    }    
 
     infoDetails = () => {
         console.log('questions and solutions1: ', this.state)
@@ -129,19 +129,19 @@ class Edit extends Component {
                 <p>{JSON.stringify(this.props.reduxStore.allData.questions)}</p>
                 {/* <p>{JSON.stringify(this.state)}</p> */}
 
- {/* {this.props.reduxStore.allData.questions.map((item) =>(
-    <div key={item.id}>
-    <tr>
-     <td>   
+ {this.props.reduxStore.allData.questions.map((item) =>(
+    <div key={item.questions}>
+    {/* <tr>
+     <td>    */}
     <textarea onChange = {(event) => this.handleChange(event, 'questions')} rows="4" defaultValue={item.questions}></textarea>
     
     <textarea onChange = {(event) => this.handleChange(event, 'solution')} rows="4" defaultValue={item.solution}></textarea>
-    </td>
-    </tr>
+    {/* </td>
+    </tr> */}
     </div>
-))} */}
-             <textarea value={this.state.editInfo.questions} onChange = {(event) => this.handleChange(event, 'questions')} rows="4"></textarea>
-             <textarea value={this.state.editInfo.solution} onChange = {(event) => this.handleChange(event, 'solution')} rows="4"></textarea>
+))}
+             {/* <textarea value={this.state.editInfo.questions} onChange = {(event) => this.handleChange(event, 'questions')} rows="4"></textarea>
+             <textarea value={this.state.editInfo.solution} onChange = {(event) => this.handleChange(event, 'solution')} rows="4"></textarea> */}
 
 
             </div>
