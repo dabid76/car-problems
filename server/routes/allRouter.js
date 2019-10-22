@@ -79,10 +79,20 @@ router.get('/questions/:id', (req, res) => {
     console.log('/issues/' + movieId);
     let queryText = 
 
-    `SELECT "issues".id, "followupQuestions".questions, "followupQuestions".solution 
+    `SELECT "followupQuestions".id, "followupQuestions".questions, "followupQuestions".solution, "followupQuestions".issues_id 
     FROM "followupQuestions"
     JOIN "issues" ON "issues".id = "followupQuestions".issues_id
-    WHERE "issues".id = $1;`;
+    WHERE "followupQuestions".id = $1;`;
+
+    // `SELECT "followupQuestions".id, "followupQuestions".issues_id, "followupQuestions".questions, "followupQuestions".solution 
+    // FROM "followupQuestions"
+  	// JOIN "issues" ON "issues".id = "followupQuestions".issues_id
+    // WHERE "issues".id = $1;`;
+
+    // `SELECT "issues".id, "followupQuestions".questions, "followupQuestions".solution 
+    // FROM "followupQuestions"
+    // JOIN "issues" ON "issues".id = "followupQuestions".issues_id
+    // WHERE "issues".id = $1;`;
     pool.query(queryText, [movieId])
         .then(results => {
             console.log(results.rows);

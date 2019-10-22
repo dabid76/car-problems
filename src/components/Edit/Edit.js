@@ -48,7 +48,7 @@ class Edit extends Component {
         {this.props.reduxStore.allData.questions.map((movieInfo) => {
             this.setState({
                 editInfo: {
-                    id: movieInfo.id,
+                    id: movieInfo.issues_id,
                     questions: movieInfo.questions,
                     solution: movieInfo.solution,
                 }
@@ -137,7 +137,7 @@ class Edit extends Component {
     <div key={item.questions}>
     {/* <tr>
      <td>    */}
-    <textarea onChange = {(event) => this.handleChange(event, 'questions')} rows="4" defaultValue={item.questions}></textarea>
+    <textarea onChange = {(event) => this.handleChange(event, `${item.questions}`)} rows="4" defaultValue={item.questions}></textarea>
     
     <textarea onChange = {(event) => this.handleChange(event, 'solution')} rows="4" defaultValue={item.solution}></textarea>
     {/* </td>
@@ -167,16 +167,16 @@ export default connect(mapStateToProps)(Edit);
 
 // class Edit extends Component {
 
-//     constructor(props) {
-//         super(props);
-//         this.state = {
+//     // constructor(props) {
+//         // super(props);
+//         state = {
 //             editInfo: {
-//                 // id: '',
+//                 id: 0,
 //                 questions: '',
 //                 solution: ''
 //             }
 //         }
-//     }
+//     // }
 
 //     componentDidMount(){
 //         this.ID();
@@ -234,7 +234,7 @@ export default connect(mapStateToProps)(Edit);
 //             <button onClick={this.addNewQA}>Add</button>
             
 //                 <h2>{this.props.match.params.id}</h2>
-//                     {this.props.reduxStore.questions.questions.map((item)=>{
+//                     {this.props.reduxStore.allData.questions.map((item)=>{
 //                     return(
 //                     <EditItem item = {item} onChange={this.onChange}/>
 //                     )

@@ -24,9 +24,11 @@ function* postNew(action){
 }
 
 function* newInfo(action){
+  console.log('in datasage newinfo')
     try{
       yield console.log(action.payload);
       yield axios.put('/allData/newInfo', action.payload);
+      yield console.log('what is?: ')
       yield getData();
       // yield getQ(action);
     }catch(error){
