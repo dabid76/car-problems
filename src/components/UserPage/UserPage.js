@@ -79,7 +79,7 @@ editIssue = (id) => {
           </tr>
         </thead>
     <tbody>
-          {this.props.reduxStore.data.data.map((item) =>(
+          {this.props.reduxStore.allData.data.map((item) =>(
                 <tr key={item.id}>
                 <td>{item.issues}</td>
                 <td>

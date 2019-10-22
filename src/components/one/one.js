@@ -29,8 +29,8 @@ class one extends Component {
         // })
 
         // console.log('log', this.state.question);
-        console.log('new question', this.props.reduxStore.questions.questions);
-        console.log('solution', this.props.reduxStore.questions.solution);
+        // console.log('new question', this.props.reduxStore.questions.questions);
+        // console.log('solution', this.props.reduxStore.questions.solution);
 
  
     this.getQuestions();
@@ -40,12 +40,12 @@ class one extends Component {
         // this.props.dispatch({type: 'GET_Q', payload: this.props.match.params.id });
         // this.props.dispatch({type: this.props.reduxStore.questions.questions});
         // console.log('id:', this.state.id);
-        console.log('new log', this.props.reduxStore.questions.questions);
-        console.log('new solution', this.props.reduxStore.questions.solution);
+        // console.log('new log', this.props.reduxStore.questions.questions);
+        // console.log('new solution', this.props.reduxStore.questions.solution);
 
         this.setState({
-            questions: this.props.reduxStore.questions.questions,
-            solution: this.props.reduxStore.questions.questions.solution,
+            questions: this.props.reduxStore.allData.data,
+            solution: this.props.reduxStore.allData.questions,
         })
         // this.noBtn = this.noBtn.bind(this);
     }
@@ -78,7 +78,7 @@ class one extends Component {
   
     noBtn = (pizza) => {
         // this.noBtn = this.noBtn.bind(this);
-        console.log('btn getting click questions', this.props.reduxStore.questions.questions[0])
+        // console.log('btn getting click questions', this.props.reduxStore.questions.questions[0])
         // this.setState({
         //     questions:  +1
         //   });
@@ -87,32 +87,32 @@ class one extends Component {
         // let nextQ = this.state.questions
         // nextQ.splice(index, 1)
 
-        let index = this.props.reduxStore.questions.questions.map(x => {
+        let index = this.props.reduxStore.allData.data.map(x => {
             return x.Id;
           }).indexOf(1);
-          this.props.reduxStore.questions.questions.shift(index, 1)
+          this.props.reduxStore.allData.questions.shift(index, 1)
           this.setState({
             ...this.state,
             questions: nextQ,
         })
           
-          console.log('nextQ1', this.props.reduxStore.questions.questions);
+          // console.log('nextQ1', this.props.reduxStore.questions.questions);
         // console.log('nextQ', nextQ)
     }
 
     
       render() {
         // let secondQ = this.props.reduxStore.questions.questions;
-console.log('log0', this.props.reduxStore.questions.questions[0])
-console.log('log1', this.props.reduxStore.questions.questions[1])
-console.log('log2', this.props.reduxStore.questions.questions[2])
+// console.log('log0', this.props.reduxStore.questions.questions[0])
+// console.log('log1', this.props.reduxStore.questions.questions[1])
+// console.log('log2', this.props.reduxStore.questions.questions[2])
 // console.log('log3', this.props.reduxStore.questions.questions.solution)
 
 // console.log('secondQ[0]', secondQ[0])
 // console.log('local state:', this.state.questions);
 // let nextQ;
 
-    let issueQ = this.props.reduxStore.questions.questions.map((item, id) => {
+    let issueQ = this.props.reduxStore.allData.questions.map((item, id) => {
         if( id == 0){
       nextQ = <h1 key={item.id}>{item.questions}</h1>
         }
@@ -142,7 +142,7 @@ console.log('log2', this.props.reduxStore.questions.questions[2])
 
             <button onClick={this.yesBtn}>Yes</button> 
             <button onClick={this.noBtn} pizza={this.state}>No</button>
-            <p>{JSON.stringify(this.props.reduxStore.questions.questions[0])}</p>
+            {/* <p>{JSON.stringify(this.props.reduxStore.questions.questions[0])}</p> */}
             {/* <p>{JSON.stringify(this.props.reduxStore.solutions)}</p> */}
 
           </div>

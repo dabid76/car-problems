@@ -7,22 +7,25 @@ function* rootSaga() {
     yield takeEvery('GET_Q', getQ);
     yield takeEvery('POST_ISSUE', postIssue);
     yield takeEvery('DEL_DATA', DelData);
-    yield takeEvery('NEW_INFO', newIfno);
+    yield takeEvery('NEW_INFO', newInfo);
     yield takeEvery('POST_NEW', postNew);
 }
 
 function* postNew(action){
   try{
     yield axios.post('/allData/newQA/', action.payload);
-    yield put({type: 'SET_Q'})
+    yield put({type: 'GET_Q'})
   }catch(error){
     console.log('error psoting new issue', error);
   }
 }
 
-function* newIfno(action){
+function* newInfo(action){
     try{
-      yield axios.put('/allData/newInfo/', action.payload);
+      yield console.log(action.payload);
+      yield axios.put('/allData/newInfo', action.payload);
+      yield getData();
+      // yield getQ(action);
     }catch(error){
       console.log('error updating new info', error);
     } // end try

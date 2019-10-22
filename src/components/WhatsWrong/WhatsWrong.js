@@ -49,7 +49,7 @@ render() {
 
         {
           
-          this.props.reduxStore.data.data.map(item =>
+          this.props.reduxStore.allData.data.map(item =>
             <option key={item.id} value={item.id}>{item.issues}</option>
           )
         }

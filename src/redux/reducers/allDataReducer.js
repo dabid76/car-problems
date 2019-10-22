@@ -20,10 +20,10 @@ const questions = (state = [], action) => {
     } // end switch
 } // end genres
 
-// const solutions = (state = [], action) => {
+// const newQS = (state = [], action) => {
 //     switch (action.type) {
-//         case 'SET_S':
-//             return action.payload;
+//         case 'EDIT_INFO':
+//             return [...state, {[action.payload.id]: action.payload.value}]
 //         default:
 //             return state;
 //     } // end switch
@@ -32,5 +32,5 @@ const questions = (state = [], action) => {
 export default combineReducers({
     data,
     questions,
-    // solutions
+    // newQS
   });
