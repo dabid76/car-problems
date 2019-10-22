@@ -56,6 +56,10 @@ class Edit extends Component {
         })} // end map
     } // end infoDetails
 
+    cancelBtn = (id) => {
+        this.props.history.push(`/UserPage`)
+    } // end cancelBtn
+
     saveBtn = () => {
         console.log('is it working?', this.state.editInfo)
         this.props.dispatch({type:'NEW_INFO', payload: this.state.editInfo})
@@ -88,7 +92,7 @@ class Edit extends Component {
         event.preventDefault();
         console.log('btn is getting click', this.state.editInfo)
         event.preventDefault();
-        this.props.dispatch({ type: 'POST_NEW', payload: this.state.editInfo })
+        this.props.dispatch({ type: 'POST_NEW', payload:  this.state.editInfo })
         this.setState({
             editInfo: {
                 questions: '',

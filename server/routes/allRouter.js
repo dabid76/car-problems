@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 // POST
 router.post('/newIssue', (req, res) => {
     const newIssue = req.body;
-    const queryText = `INSERT INTO "issues" ("issues")
+    const queryText = `INSERT INTO "issues"("issues")
                       VALUES ($1);`;
     const queryValues = [
     newIssue.issues,
@@ -37,6 +37,9 @@ router.post('/newQA', (req, res) => {
     console.log('what id is this? ', newQA);
 
     const queryText = 
+    // `INSERT INTO "followupQuestions" ("questions", "issues_id", "solution")
+    // VALUES ($1, $2, $3);`;
+
     `INSERT INTO "followupQuestions" ("questions", "issues_id", "solution")
     VALUES ($1, $2, $3);`;
     
@@ -44,13 +47,15 @@ router.post('/newQA', (req, res) => {
     // VALUES ($1, $2, $3);`;
     const queryValues = [
         newQA.questions,
-        newQA.issues_id,
+        newQA.id,
         newQA.solution,
     ];
-    pool.query(queryText, [queryValues])
+    pool.query(queryText, queryValues)
       .then(() => { 
-        console.log('what is this? ', result.rows);
-        res.send(result.rows);
+          res.sendStatus(201)
+        // res.send((result) => result.rows);
+        // console.log('what is this? ', result.rows);
+
         })
       .catch((err) => {
         console.log('Error completing posting new questions and solutions in query', err);
