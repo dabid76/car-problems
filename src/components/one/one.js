@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import swal from 'sweetalert';
+import { maxHeaderSize } from 'http';
 
 
 // const headsOrTails = () => (Math.random() < 0.5);
@@ -56,17 +57,17 @@ class one extends Component {
     yesBtn = (props) => {
         // console.log ('finding the solution', this.props.reduxStore.allData.solution);
 
-        // let index = this.props.reduxStore.allData.data.map(x => {
-        //   return x.Id;
-        // }).indexOf(1);
-        // this.props.reduxStore.allData.questions.shift(index, 1)
+      //   let index = this.props.reduxStore.allData.data.map(x => {
+      //     return x.Id;
+      //   }).indexOf(1);
+      //   this.props.reduxStore.allData.questions.shift(index, 1)
       //   this.setState({
       //     ...this.state,
-      //     solution: nextQ,
+      //     questions: nextQ,
       // })
-        console.log('solution', this.props.reduxStore.allData.questions[0].solution);
+        // console.log('solution', this.props.reduxStore.allData.questions[0].solution);
 
-    if ( this.yesBtn === this.yesBtn ) {
+    if ( this.yesBtn == this.yesBtn ) {
       // swal("Oops!", "Something went wrong!", "error");
       swal({
         title: this.props.reduxStore.allData.questions[0].solution,
@@ -87,7 +88,7 @@ class one extends Component {
             window.location.href = '/#/Home';
           });
         } else {
-          (this.noBtn = this.noBtn)       
+          
           }
       })
     }
@@ -101,8 +102,9 @@ class one extends Component {
   }
 
   
-    noBtn = () => {
+    noBtn = (event) => {
 
+      event.preventDefault();
 
         let index = this.props.reduxStore.allData.data.map(x => {
             return x.Id;
@@ -112,6 +114,13 @@ class one extends Component {
             ...this.state,
             questions: nextQ,
         })
+        if( this.props.reduxStore.allData.questions.length < 1){
+      swal("Oops!", "You max out on questions, going back to issues page", "error")
+      .then(function() {
+        window.location.href = '/#/WhatsWrong';
+      });
+        }
+
           
           // console.log('nextQ1', this.props.reduxStore.questions.questions);
         // console.log('nextQ', nextQ)
@@ -151,7 +160,7 @@ class one extends Component {
             <button onClick={this.yesBtn}>Yes</button> 
             <button onClick={this.noBtn} pizza={this.state}>No</button>
             {/* <p>{JSON.stringify(this.props.reduxStore.questions.questions[0])}</p> */}
-            {/* <p>{JSON.stringify(this.props.reduxStore.solutions)}</p> */}
+            <p>{JSON.stringify(this.props.reduxStore.allData.questions.length)}</p>
 
           </div>
     
