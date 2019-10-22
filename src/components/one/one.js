@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import swal from 'sweetalert';
+
 
 // const headsOrTails = () => (Math.random() < 0.5);
 
@@ -51,12 +53,12 @@ class one extends Component {
 
 
     
-    yesBtn = (id) => {
-        console.log ('finding the solution', this.props.reduxStore.allData.solution);
+    yesBtn = (props) => {
+        // console.log ('finding the solution', this.props.reduxStore.allData.solution);
 
-        let index = this.props.reduxStore.allData.data.map(x => {
-          return x.Id;
-        }).indexOf(1);
+        // let index = this.props.reduxStore.allData.data.map(x => {
+        //   return x.Id;
+        // }).indexOf(1);
         // this.props.reduxStore.allData.questions.shift(index, 1)
       //   this.setState({
       //     ...this.state,
@@ -65,9 +67,34 @@ class one extends Component {
         console.log('solution', this.props.reduxStore.allData.questions[0].solution);
 
     if ( this.yesBtn === this.yesBtn ) {
-      (window).confirm(this.props.reduxStore.allData.questions[0].solution)
+      // swal("Oops!", "Something went wrong!", "error");
+      swal({
+        title: this.props.reduxStore.allData.questions[0].solution,
+        text: "Problem fix?",
+        icon: "warning",
+        buttons: [
+          `No, it didn't!`,
+          'Yes, it did!'
+        ],
+        dangerMode: true,
+      }).then(function(isConfirm) {
+        if (isConfirm) {
+          swal({
+            title: 'GREAT!',
+            text: 'Going to home page',
+            icon: 'success'
+          }).then(function() {
+            window.location.href = '/#/Home';
+          });
+        } else {
+          (this.noBtn = this.noBtn)       
+          }
+      })
+    }
 
-    } 
+      // (window).confirm(this.props.reduxStore.allData.questions[0].solution)
+
+    // } 
     // else if (this.noBtn = this.noBtn.bind(this)){
 
     // }
@@ -75,15 +102,7 @@ class one extends Component {
 
   
     noBtn = () => {
-        // this.noBtn = this.noBtn.bind(this);
-        // console.log('btn getting click questions', this.props.reduxStore.questions.questions[0])
-        // this.setState({
-        //     questions:  +1
-        //   });
-        // console.log('removing product from cart. State:', this.state);
-        // let index = this.state.questions.indexOf(pizza);
-        // let nextQ = this.state.questions
-        // nextQ.splice(index, 1)
+
 
         let index = this.props.reduxStore.allData.data.map(x => {
             return x.Id;
@@ -100,15 +119,6 @@ class one extends Component {
 
     
       render() {
-        // let secondQ = this.props.reduxStore.questions.questions;
-// console.log('log0', this.props.reduxStore.questions.questions[0])
-// console.log('log1', this.props.reduxStore.questions.questions[1])
-// console.log('log2', this.props.reduxStore.questions.questions[2])
-// console.log('log3', this.props.reduxStore.questions.questions.solution)
-
-// console.log('secondQ[0]', secondQ[0])
-// console.log('local state:', this.state.questions);
-// let nextQ;
 
     let issueQ = this.props.reduxStore.allData.questions.map((item, id) => {
         if( id == 0){
