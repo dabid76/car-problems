@@ -2,9 +2,6 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-// const axios = require('axios');
-
-// const router = express.Router();
 
 // GET
 router.get('/', (req, res) => {
@@ -37,15 +34,24 @@ router.post('/newIssue', (req, res) => {
   // POST
 router.post('/newQA', (req, res) => {
     const newQA = req.body;
+    console.log('what id is this? ', newQA);
+
     const queryText = 
-    `INSERT INTO "followupQuestions" ("questions", "solution")
-    VALUES ($1, $2);`;
+    `INSERT INTO "followupQuestions" ("questions", "issues_id", "solution")
+    VALUES ($1, $2, $3);`;
+    
+    // `INSERT INTO "public"."followupQuestions"("questions", "issues_id", "solution")
+    // VALUES ($1, $2, $3);`;
     const queryValues = [
         newQA.questions,
+        newQA.issues_id,
         newQA.solution,
     ];
     pool.query(queryText, [queryValues])
-      .then(() => { res.sendStatus(201); })
+      .then(() => { 
+        console.log('what is this? ', result.rows);
+        res.send(result.rows);
+        })
       .catch((err) => {
         console.log('Error completing posting new questions and solutions in query', err);
         res.sendStatus(500);

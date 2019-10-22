@@ -13,10 +13,10 @@ function* rootSaga() {
 
 function* postNew(action){
   try{
-    yield axios.post('/allData/newQA/', action.payload);
+    yield axios.post('/allData/newQA', action.payload);
     yield put({type: 'GET_Q'})
   }catch(error){
-    console.log('error psoting new issue', error);
+    console.log('error psoting new question', error);
   }
 }
 

@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 // const headsOrTails = () => (Math.random() < 0.5);
 
 let nextQ;
-// let solutionToQ;
 
 class one extends Component {
     constructor(props) {
@@ -53,30 +52,29 @@ class one extends Component {
 
     
     yesBtn = (id) => {
-        console.log ('finding the solution', this.props.reduxStore.questions.questions[0].solution);
+        console.log ('finding the solution', this.props.reduxStore.allData.solution);
 
-        // let index = this.props.reduxStore.questions.questions.solution.map(x => {
-        //     return x.Id;
-        //   }).indexOf(1);
-        //   this.props.reduxStore.questions.questions.solution.shift(index, 1)
-        //   this.setState({
-        //     ...this.state,
-        //     solution: nextQ,
-        // })
-        console.log('solution', this.props.reduxStore.questions.questions[0].solution);
+        let index = this.props.reduxStore.allData.data.map(x => {
+          return x.Id;
+        }).indexOf(1);
+        // this.props.reduxStore.allData.questions.shift(index, 1)
+      //   this.setState({
+      //     ...this.state,
+      //     solution: nextQ,
+      // })
+        console.log('solution', this.props.reduxStore.allData.questions[0].solution);
 
-    // if ( this.yesBtn === this.yesBtn ) {
-    //     this.setState({
-    //         ...this.state,
-    //         solution: solutionToQ,
-    //     })
-    //   return this.props.reduxStore.questions.questions.solution
+    if ( this.yesBtn === this.yesBtn ) {
+      (window).confirm(this.props.reduxStore.allData.questions[0].solution)
+
+    } 
+    // else if (this.noBtn = this.noBtn.bind(this)){
 
     // }
   }
 
   
-    noBtn = (pizza) => {
+    noBtn = () => {
         // this.noBtn = this.noBtn.bind(this);
         // console.log('btn getting click questions', this.props.reduxStore.questions.questions[0])
         // this.setState({
