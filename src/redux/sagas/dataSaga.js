@@ -68,8 +68,8 @@ function* postIssue(action){
   function* delCom(id) {
     console.log('what', id.payload.issues_id)
     try {
-      yield axios.delete(`/allData/deleteCom/${id.payload}`);
-      yield put({ type: 'GET_DATA', payload: id.payload.issues_id});
+      yield axios.delete(`/allData/deleteCom/${id.payload.id}`);
+      yield put({ type: 'GET_Q', payload: id.payload.issues_id});
     } catch (error) {
       console.log('error while delete question', error);
     }

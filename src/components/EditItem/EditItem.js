@@ -206,7 +206,7 @@ class  EditItem extends Component {
     deleteComment = () =>{
         console.log('btn click', this.props.item.id)
         if(window.confirm('Are you sure you want to delete this question?')){
-            this.props.dispatch({ type: 'DELETE_COMMENT', payload:  this.props.item.id})
+            this.props.dispatch({ type: 'DELETE_COMMENT', payload:  {id: this.props.item.id , issues_id: this.props.item.issues_id}})
         }
     }
     render() {
