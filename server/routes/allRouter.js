@@ -73,6 +73,16 @@ router.delete('/delete/:id', (req, res) => {
       });
   });
 
+router.delete('/deleteCom/:id', (req, res) => {
+    const queryText = `DELETE FROM "followupQuestions" WHERE "id" = $1;`;
+    pool.query(queryText, [req.params.id])
+      .then(() => { res.sendStatus(200); })
+      .catch((err) => {
+        console.log('Error delete SELECT comment query', err);
+        res.sendStatus(500);
+      });
+  });
+
 // GET
 router.get('/questions/:id', (req, res) => {
     let movieId = req.params.id;

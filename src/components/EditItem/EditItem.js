@@ -133,24 +133,46 @@ class  EditItem extends Component {
     //     this.saveComment();
     // }   
 
-    // componentWillUpdate = (prevProps) => {
-    //     if
-    //     this.saveComment();
-    // }
+    componentWillUpdate = (prevProps) => {
+        if (this.props.reduxStore.allData.questions !== prevProps.reduxStore.allData.questions){
+            {this.props.reduxStore.allData.questions.map((details) => {
+                this.setState({
+                    questions: details.questions,
+                  })
+            });       
+          }   
+    }
+}
 
     // shouldComponentUpdate(){
     //     this.setComment();
     // }
 
-    componentWillUpdate = (prevProps) => {
-        if (this.props.reduxStore.allData.questions !== prevProps.reduxStore.allData.questions){
-            const movie = this.props.reduxStore.allData.questions;
-            //set local state based on Redux state
+    // componentDidUpdate(prevProps) {
+    //     if (this.props.item.questions !== prevProps.item.questions){
+    //         {this.props.item.questions.map((movieInfo) => {
+    //             this.setState({
+    //                 editInfo: {
+    //                     questions: movieInfo.questions,
+    //                 }
+    //             }) // end setState
+    //         })
+    //     }
+    //         // this.updateCurrent();  
+
+    //       } 
+    //      }
+    
+    updateCurrent = () =>{
+        {this.props.reduxStore.allData.questions.map((movieInfo) => {
             this.setState({
-              questions: movie.questions,
-            })
-          }   
-         }
+                editInfo: {
+                    questions: movieInfo.questions,
+                }
+            }) // end setState
+        })
+    }
+    }
 
     setComment = () =>{
         this.setState({ questions: this.props.item.questions});
@@ -165,9 +187,9 @@ class  EditItem extends Component {
             // this.props.dispatch({type:'NEW_INFO', payload: {id: this.props.item.id , questions: this.state.questions}})
 
         }else{
-            this.props.dispatch({type:'NEW_INFO', payload: {id: this.props.item.id , questions: this.state.questions}})
-            // this.props.history(`/Edit/${this.props.match.id}`)
-
+            this.props.dispatch({type:'NEW_INFO', payload: {id: this.props.item.id , questions: this.state.questions, issues_id: this.props.item.issues_id}})
+            // this.props.history.push(`/Edit/${this.props.match.params.id}`)
+// console.log('id?', this.props.item.issues_id)
         }
         // this.setComment();
         // this.props.history.push(`/Edit/${this.props.match.params.id}`)
@@ -178,12 +200,15 @@ class  EditItem extends Component {
     handleChange = (event) =>{
         console.log('happening: ', event.target.value)
         this.setState({ questions: event.target.value})
+        // this.editComment(event);
+
     }
-    // deleteComment = () =>{
-    //     if(window.confirm('Are you sure you want to delete this comment?')){
-    //         this.props.dispatch({ type: 'DELETE_COMMENT', payload: {id: this.props.comment.id , game: this.props.comment.game_id}})
-    //     }
-    // }
+    deleteComment = () =>{
+        console.log('btn click', this.props.item.id)
+        if(window.confirm('Are you sure you want to delete this question?')){
+            this.props.dispatch({ type: 'DELETE_COMMENT', payload:  this.props.item.id})
+        }
+    }
     render() {
       return (
         <div className="comment">
@@ -195,10 +220,10 @@ class  EditItem extends Component {
             {(this.props.item.questions === this.props.reduxStore.allData.questions) ? 
             <>
             {/* <Button icon onClick = {this.editComment}>
-                <Icon name='edit'/>
-            </Button> */}
-            {/* <button onClick = {this.deleteComment}>
-                <Icon name='delete'/>
+                <Icon name='edit'/>Edit1
+            </Button>
+            <button onClick = {this.deleteComment}>
+                <Icon name='delete'/>Delete1
             </button> */}
             </> 
             : (this.props.reduxStore.user.admin) ?
@@ -206,9 +231,9 @@ class  EditItem extends Component {
             <Button icon onClick = {this.editComment}>
                 <Icon name='edit'/>Edit
             </Button>
-            {/* <button onClick = {this.deleteComment}> */}
-                {/* <Icon name='delete'/> */}
-            {/* </button> */}
+            <button onClick = {this.deleteComment}>
+                <Icon name='delete'/>Delete
+            </button>
             </> 
             : ''
             }

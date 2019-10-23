@@ -9,6 +9,7 @@ function* rootSaga() {
     yield takeEvery('DEL_DATA', DelData);
     yield takeEvery('NEW_INFO', newInfo);
     yield takeEvery('POST_NEW', postNew);
+    yield takeEvery('DELETE_COMMENT', delCom);
 }
 
 function* postNew(action){
@@ -35,6 +36,8 @@ function* newInfo(action){
       yield axios.put('/allData/newInfo', action.payload);
       
       yield console.log('what is?: ')
+      yield put({type: 'GET_Q', payload: action.payload.issues_id})
+
       // yield getData();
       // yield getQ(action);
     }catch(error){
@@ -57,6 +60,16 @@ function* postIssue(action){
       yield put({ type: 'GET_DATA'});
     } catch (error) {
       console.log('error while delete issue', error);
+    }
+  }  
+  
+  function* delCom(id) {
+    console.log('what', id.payload)
+    try {
+      yield axios.delete(`/allData/deleteCom/${id.payload}`);
+      yield put({ type: 'GET_DATA', payload: id.payload.id});
+    } catch (error) {
+      console.log('error while delete question', error);
     }
   }
 

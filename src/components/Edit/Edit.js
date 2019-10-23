@@ -307,6 +307,8 @@ componentWillReceiveProps = () => {
     })
 }    }
 componentWillMount = () => {
+    this.props.dispatch({ type: 'GET_DATA' });
+
     {this.props.reduxStore.allData.questions.map((movieInfo) => {
         this.setState({
             editInfo: {
@@ -314,7 +316,18 @@ componentWillMount = () => {
             }
         }) // end setState
     })
-}    }
+}    
+}
+
+    // componentWillUpdate = (prevProps) => {
+    //     if (this.props.reduxStore.allData.questions !== prevProps.reduxStore.allData.questions){
+    //         const movie = this.props.reduxStore.allData.questions;
+    //         //set local state based on Redux state
+    //         this.setState({
+    //           questions: movie.questions,
+    //         })
+    //       }   
+    // }
     
 
   handleChange = (event, propertyName) =>{
@@ -333,7 +346,7 @@ componentWillMount = () => {
     console.log('btn getting click', this.state.editInfo)
     console.log('btn1 getting click', this.state.editInfo.questions)
     console.log('btn2 getting click', this.props.reduxStore.allData.questions)
-    console.log('btn2 getting click', this.props.reduxStore.allData.issues_id)
+    console.log('btn2 getting click', this.props.reduxStore.allData.questions.id)
 
     this.props.dispatch({type:'POST_NEW', payload: this.state.editInfo})
     this.setState({editInfo: ''});
