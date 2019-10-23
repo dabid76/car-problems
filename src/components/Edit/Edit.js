@@ -343,10 +343,10 @@ componentWillMount = () => {
   }
   handleSubmit = (event, propertyName) =>{
     console.log('btn getting click', this.state)
-    console.log('btn getting click', this.state.editInfo)
+    console.log('btn getting click', this.state.editInfo.id)
     console.log('btn1 getting click', this.state.editInfo.questions)
+    console.log('btn2 getting click', this.props.reduxStore.user.id)
     console.log('btn2 getting click', this.props.reduxStore.allData.questions)
-    console.log('btn2 getting click', this.props.reduxStore.allData.questions.id)
 
     this.props.dispatch({type:'POST_NEW', payload: this.state.editInfo})
     this.setState({editInfo: ''});

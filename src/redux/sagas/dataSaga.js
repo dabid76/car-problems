@@ -21,6 +21,8 @@ function* postNew(action){
     yield console.log('what???', action.payload);
 
     yield axios.post('/allData/newQA', action.payload);
+    yield put({type: 'GET_Q', payload: action.payload.id})
+
     // yield getQ(action);
     // yield put({type: 'GET_Q' })
   }catch(error){
@@ -64,10 +66,10 @@ function* postIssue(action){
   }  
   
   function* delCom(id) {
-    console.log('what', id.payload)
+    console.log('what', id.payload.issues_id)
     try {
       yield axios.delete(`/allData/deleteCom/${id.payload}`);
-      yield put({ type: 'GET_DATA', payload: id.payload.id});
+      yield put({ type: 'GET_DATA', payload: id.payload.issues_id});
     } catch (error) {
       console.log('error while delete question', error);
     }
