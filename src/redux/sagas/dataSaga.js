@@ -13,23 +13,29 @@ function* rootSaga() {
 
 function* postNew(action){
   try{
-    yield console.log(action.payload);
+    yield console.log('what???', action.payload.store);
+    yield console.log('what???', action.payload.id);
+    yield console.log('what???', action.payload.issues_id);
+    yield console.log('what???', action.payload.editInfo);
+    yield console.log('what???', action.payload);
 
     yield axios.post('/allData/newQA', action.payload);
     // yield getQ(action);
-    yield put({type: 'GET_Q', payload: action.payload.id })
+    // yield put({type: 'GET_Q' })
   }catch(error){
     console.log('error psoting new question', error);
   }
 }
 
 function* newInfo(action){
-  console.log('in datasage newinfo')
+  console.log('in datasage newinfo', action.payload.questions)
+  console.log('in id newinfo', action.payload.id)
     try{
       yield console.log(action.payload);
       yield axios.put('/allData/newInfo', action.payload);
+      
       yield console.log('what is?: ')
-      yield getData();
+      // yield getData();
       // yield getQ(action);
     }catch(error){
       console.log('error updating new info', error);

@@ -17,7 +17,14 @@ class UserPage extends Component {
 
   componentDidMount(id) {
     // this.props.dispatch({type: 'GET_Q', payload: this.props.match.params.id });
-
+//     {this.props.reduxStore.allData.questions.map((movieInfo) => {
+//       this.setState({
+//           editInfo: {
+//               id: movieInfo.issues_id,
+//           }
+//       }) // end setState
+//   })
+// }
     this.props.dispatch({ type: 'GET_DATA' });
 }
 
@@ -38,7 +45,7 @@ addNewIssue = event => {
   this.props.dispatch({ type: 'POST_ISSUE', payload: this.state.issue })
   this.setState({
     issue: {
-          id: this.state.issue.id + 1,
+          id: this.state.issue.issues_id + 1,
           issues: '',
       }
   });

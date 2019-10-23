@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import swal from 'sweetalert';
-import { maxHeaderSize } from 'http';
 
 
 // const headsOrTails = () => (Math.random() < 0.5);

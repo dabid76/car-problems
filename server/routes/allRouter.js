@@ -40,11 +40,11 @@ router.post('/newQA', (req, res) => {
     // `INSERT INTO "followupQuestions" ("questions", "issues_id", "solution")
     // VALUES ($1, $2, $3);`;
 
+    // `INSERT INTO "followupQuestions" ("questions", "issues_id", "solution") 
+    // VALUES ('test1', 4, 'test1);`;
+    
     `INSERT INTO "followupQuestions" ("questions", "issues_id", "solution")
     VALUES ($1, $2, $3);`;
-    
-    // `INSERT INTO "public"."followupQuestions"("questions", "issues_id", "solution")
-    // VALUES ($1, $2, $3);`;
     const queryValues = [
         newQA.questions,
         newQA.id,
@@ -79,10 +79,10 @@ router.get('/questions/:id', (req, res) => {
     console.log('/issues/' + movieId);
     let queryText = 
 
-    `SELECT "followupQuestions".id, "followupQuestions".questions, "followupQuestions".solution, "followupQuestions".issues_id 
+    `SELECT "followupQuestions".id, "followupQuestions".issues_id, "followupQuestions".questions, "followupQuestions".solution 
     FROM "followupQuestions"
-    JOIN "issues" ON "issues".id = "followupQuestions".issues_id
-    WHERE "followupQuestions".id = $1;`;
+  	JOIN "issues" ON "issues".id = "followupQuestions".issues_id
+    WHERE "issues".id = $1  ORDER BY "id" ASC;`;
 
     // `SELECT "followupQuestions".id, "followupQuestions".issues_id, "followupQuestions".questions, "followupQuestions".solution 
     // FROM "followupQuestions"
@@ -106,24 +106,39 @@ router.get('/questions/:id', (req, res) => {
 
 // PUT
 router.put('/newInfo', (req, res) => {
+    // for (let i = 0; i < update.length; i++){
     let update = req.body;
+    
     // let id = req.body.id
     console.log('what id is this? ', update);
+    // for (let i = 0; i < update.length; i++){
+    
     let queryText = 
-    `UPDATE "followupQuestions" SET "questions"=$1, "solution"=$2 
-    WHERE "id"=$3;`;
+
+
+    `UPDATE "followupQuestions" SET "questions" = $1
+    WHERE "id" = $2;`;
+
+    // `UPDATE "followupQuestions" SET "questions"= $1, "issues_id" = $2
+    // WHERE "id" = $3;`;
+
 // `UPDATE "followupQuestions" 
 // SET "questions" = $1, "issues_id" = $2, "solution" = $3
 // FROM "issues"
 // WHERE "followupQuestions".id = $4;`;
-    pool.query(queryText, [update.questions, update.solution, update.id])
+
+// for (let i = 0; i < update.length; i++){
+
+    pool.query(queryText, [update.questions, update.id])
         .then(results => {
+            console.log('what is this? ', update);
             res.sendStatus(201);
         })
         .catch(error => {
             console.log(error);
             res.sendStatus(500);
         })
+    // }
 }); // end router.PUT
 
 module.exports = router

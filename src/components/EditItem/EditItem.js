@@ -1,108 +1,231 @@
   
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+// import React, { Component } from 'react';
+// import { connect } from 'react-redux';
 
 
-class EditItem extends Component {
 
-        constructor(props) {
-        super(props);
-        this.state = {
-            editInfo: {
-                // id: '',
-                questions: '',
-                solution: ''
-            }
-        }
-    }
+// class EditItem extends Component {
 
-    componentDidMount(){
-        this.infoDetails();
-    }
+//     //     constructor(props) {
+//     //     super(props);
+//     //     this.state = {
+//     //         editInfo: {
+//     //             // id: '',
+//     //             questions: '',
+//     //             // solution: ''
+//     //         }
+//     //     }
+//     // }
 
-        componentWillReceiveProps(){
-        this.infoDetails();
 
-    }
+//         state = {
+//         questions: '',
+//         // isEdit: false,
+//     }
 
-    infoDetails = () => {
-        console.log('questions and solutions1: ', this.state)
+//     componentDidMount(){
+//         this.infoDetails();
+//     }
 
-            this.setState({
-                editInfo: {
-                    // id: this.props.item.id,
-                    questions: this.state.questions,
-                    solution: this.state.solution,
-                }
-            }) // end setState
-        }
+//         componentWillReceiveProps(){
+//         this.infoDetails();
 
-    // saveBtn = (id) => {
-    //     console.log('is it working?', this.state.editInfo)
-    //     this.props.dispatch({type:'NEW_INFO', payload: this.state.editInfo})
-    //     this.props.history.push(`/UserPage`);
-    // } // end saveBtn
+//     }
 
-    handleChange = (event, propertyName) => {
-        console.log('in handleChange', event.target.value)
-        // this.props.dispatch({type:'EDIT_INFO', payload: this.state.editInfo})
+//     infoDetails = () => {
+//         console.log('questions and solutions1: ', this.props.editInfo)
 
-        this.setState({
-            editInfo:{
-              ...this.state.editInfo,
-             [propertyName]: event.target.value,
-            }
-        }) // end setState
+//             this.setState({
+//                 editInfo: {
+//                     // id: this.props.item.id,
+//                     questions: this.state.questions,
+//                     solution: this.state.solution,
+//                 }
+//             }) // end setState
+//         }
+
+//     // saveBtn = (id) => {
+//     //     console.log('is it working?', this.state.editInfo)
+//     //     this.props.dispatch({type:'NEW_INFO', payload: this.state.editInfo})
+//     //     this.props.history.push(`/UserPage`);
+//     // } // end saveBtn
+
+//     handleChange = (event, propertyName) => {
+//         console.log('in handleChange', event.target.value)
+//         // this.props.dispatch({type:'EDIT_INFO', payload: this.state.editInfo})
+
+//         this.setState({
+//             editInfo:{
+//               ...this.state.editInfo,
+//              [propertyName]: event.target.value,
+//             }
+//         }) // end setState
         
-    } // end handleChange
+//     } // end handleChange
 
-    // handleNameChange = (event, propertyName) => {
-    //     console.log('in handleNameChange', event.target.value)
+//     // handleNameChange = (event, propertyName) => {
+//     //     console.log('in handleNameChange', event.target.value)
 
-    //     this.setState({
-    //         editInfo:{
-    //           ...this.state.editInfo,
-    //          [propertyName]: event.target.value,
-    //         }
-    //     }) // end setState
-    // } // end handleChange
+//     //     this.setState({
+//     //         editInfo:{
+//     //           ...this.state.editInfo,
+//     //          [propertyName]: event.target.value,
+//     //         }
+//     //     }) // end setState
+//     // } // end handleChange
 
-    // addNewQA = event => {
-    //     event.preventDefault();
-    //     console.log('btn is getting click', this.state.editInfo)
-    //     event.preventDefault();
-    //     this.props.dispatch({ type: 'POST_NEW', payload: this.state.editInfo })
-    //     // this.setState({
-    //     //     editInfo: {
-    //     //         questions: '',
-    //     //         solution: ''
-    //     //     }
-    //     // });
-    //   }
+//     // addNewQA = event => {
+//     //     event.preventDefault();
+//     //     console.log('btn is getting click', this.state.editInfo)
+//     //     event.preventDefault();
+//     //     this.props.dispatch({ type: 'POST_NEW', payload: this.state.editInfo })
+//     //     // this.setState({
+//     //     //     editInfo: {
+//     //     //         questions: '',
+//     //     //         solution: ''
+//     //     //     }
+//     //     // });
+//     //   }
 
-    render() {
-        return (
-            <>  
-      <p>{JSON.stringify(this.props.item)}</p>
+//     render() {
+//         return (
+//             <>  
+//       {/* <p>{JSON.stringify(this.props.editInfo)}</p> */}
+//       <p>{JSON.stringify(this.props.item.questions)}</p>
+//       <p>{JSON.stringify(this.props.item.solution)}</p>
 
-            {/* <input type='text' placeholder="Question"  onChange={this.handleNameChange} />
-            <input type='text' placeholder="Solution"  onChange={this.handleNameChange} />
+//             {/* <input type='text' placeholder="Question"  onChange={this.handleNameChange} />
+//             <input type='text' placeholder="Solution"  onChange={this.handleNameChange} />
             
-            <button onClick={this.addNewQA}>Add</button> */}
-            <br/>
-            <textarea value={this.state.editInfo.questions} onChange = {(event) => this.handleChange(event, 'questions')} rows="4"></textarea>
-            <textarea value={this.state.editInfo.solution} onChange = {(event) => this.handleChange(event, 'solution')} rows="4"></textarea>
-            <br/>
-            {/* <button onClick={this.saveBtn}>Save</button> */}
+//             <button onClick={this.addNewQA}>Add</button> */}
+//             <br/>
+//             <textarea defaultValue={this.props.item.questions} onChange = {(event) => this.handleChange(event, 'questions')} rows="4"></textarea>
+//             <textarea defaultValue={this.props.item.solution} onChange = {(event) => this.handleChange(event, 'solution')} rows="4"></textarea>
+//             <br/>
+//             {/* <button onClick={this.saveBtn}>Save</button> */}
 
 
-            </>
-        );
+//             </>
+//         );
+//     }
+// }
+
+
+import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Button, Icon, Card, Image } from 'semantic-ui-react';
+
+class  EditItem extends Component {
+    state = {
+        questions: '',
+        isEdit: false,
     }
-}
+    componentDidMount = () =>{
+        this.setComment();
+    }
+
+    // componentWillReceiveProps(){
+    //     this.setComment();
+    // }
+
+    // componentWillMount(){
+    //     this.saveComment();
+    // }   
+
+    // componentWillUpdate = (prevProps) => {
+    //     if
+    //     this.saveComment();
+    // }
+
+    // shouldComponentUpdate(){
+    //     this.setComment();
+    // }
+
+    componentWillUpdate = (prevProps) => {
+        if (this.props.reduxStore.allData.questions !== prevProps.reduxStore.allData.questions){
+            const movie = this.props.reduxStore.allData.questions;
+            //set local state based on Redux state
+            this.setState({
+              questions: movie.questions,
+            })
+          }   
+         }
+
+    setComment = () =>{
+        this.setState({ questions: this.props.item.questions});
+    }
+    editComment = () =>{
+        this.setState({ isEdit: !this.state.isEdit})
+    }
+    saveComment = () =>{
+        // this.props.history.push(`/Edit/${this.props.match.params.id}`)
+
+        if(this.props.isAdmin){
+            // this.props.dispatch({type:'NEW_INFO', payload: {id: this.props.item.id , questions: this.state.questions}})
+
+        }else{
+            this.props.dispatch({type:'NEW_INFO', payload: {id: this.props.item.id , questions: this.state.questions}})
+            // this.props.history(`/Edit/${this.props.match.id}`)
+
+        }
+        // this.setComment();
+        // this.props.history.push(`/Edit/${this.props.match.params.id}`)
+
+        this.setState({ isEdit: !this.state.isEdit})
+
+    }
+    handleChange = (event) =>{
+        console.log('happening: ', event.target.value)
+        this.setState({ questions: event.target.value})
+    }
+    // deleteComment = () =>{
+    //     if(window.confirm('Are you sure you want to delete this comment?')){
+    //         this.props.dispatch({ type: 'DELETE_COMMENT', payload: {id: this.props.comment.id , game: this.props.comment.game_id}})
+    //     }
+    // }
+    render() {
+      return (
+        <div className="comment">
+        {/* <p>{JSON.stringify(this.props.reduxStore.allData.questions)}</p> */}
+
+            {!this.state.isEdit ?
+            <>
+            <p>{this.props.item.questions}: {this.props.item.solution}</p>
+            {(this.props.item.questions === this.props.reduxStore.allData.questions) ? 
+            <>
+            {/* <Button icon onClick = {this.editComment}>
+                <Icon name='edit'/>
+            </Button> */}
+            {/* <button onClick = {this.deleteComment}>
+                <Icon name='delete'/>
+            </button> */}
+            </> 
+            : (this.props.reduxStore.user.admin) ?
+            <>
+            <Button icon onClick = {this.editComment}>
+                <Icon name='edit'/>Edit
+            </Button>
+            {/* <button onClick = {this.deleteComment}> */}
+                {/* <Icon name='delete'/> */}
+            {/* </button> */}
+            </> 
+            : ''
+            }
+            </> :
+            <>
+            <p>{this.props.editInfo}:</p>
+            <input onChange = {(event) => this.handleChange(event)} value = {this.state.questions}></input>
+            <button onClick = {this.saveComment}>Save</button>
+            </>
+            }
+        </div>
+      );
+    }
+  }
 
 const mapStateToProps = reduxStore => ({
     reduxStore,
 });
 
-export default connect(mapStateToProps)(EditItem);
+export default withRouter(connect(mapStateToProps)(EditItem));
