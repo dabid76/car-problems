@@ -119,10 +119,12 @@ import { Button, Icon, Card, Image } from 'semantic-ui-react';
 class  EditItem extends Component {
     state = {
         questions: '',
+        // id: 0,
         isEdit: false,
     }
     componentDidMount = () =>{
         this.setComment();
+
     }
 
     // componentWillReceiveProps(){
@@ -167,7 +169,7 @@ class  EditItem extends Component {
         {this.props.reduxStore.allData.questions.map((movieInfo) => {
             this.setState({
                 editInfo: {
-                    questions: movieInfo.questions,
+                    id: movieInfo.questions,
                 }
             }) // end setState
         })
@@ -175,7 +177,8 @@ class  EditItem extends Component {
     }
 
     setComment = () =>{
-        this.setState({ questions: this.props.item.questions});
+        console.log('id?', this.props.item.id)
+        this.setState({ questions: this.props.item.questions, id: this.props.editInfo});
     }
     editComment = () =>{
         this.setState({ isEdit: !this.state.isEdit})

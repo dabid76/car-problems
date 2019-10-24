@@ -7,7 +7,6 @@ class WhatsWrong extends Component {
 
   componentDidMount(id) {
     this.props.dispatch({ type: 'GET_DATA' });
-    // this.props.dispatch(action);
   }
 
   state = {

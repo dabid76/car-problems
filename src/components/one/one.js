@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import swal from 'sweetalert';
 
-
-// const headsOrTails = () => (Math.random() < 0.5);
-
 let nextQ;
 
 class one extends Component {

@@ -1,11 +1,6 @@
-// import React from 'react';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import LogOutButton from '../LogOutButton/LogOutButton';
 
-// this could also be written with destructuring parameters as:
-// const UserPage = ({ user }) => (
-// and then instead of `props.user.username` you could use `user.username`
 class UserPage extends Component {
     
   state = {
@@ -62,7 +57,7 @@ removeIssue = (id) => {
 }
 
 editIssue = (id) => {
-  console.log('edit btn click', id)
+  console.log('edit btn click', this.props.match.params.id, id)
   this.props.dispatch({type: 'GET_Q', payload: id });
 
   this.props.history.push(`/Edit/${id}`)

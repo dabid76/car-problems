@@ -86,7 +86,7 @@ function* getData(){
 
   function* getQ(action){
     try {
-        console.log('action', action);
+        console.log('action', action.payload);
         
         let response = yield axios.get(`/allData/questions/${action.payload}`)
         yield put({type: 'SET_Q', payload: response.data})
