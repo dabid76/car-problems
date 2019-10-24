@@ -114,7 +114,7 @@
 import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Button, Icon, Card, Image } from 'semantic-ui-react';
+import { Button, Icon} from 'semantic-ui-react';
 
 class  EditItem extends Component {
     state = {
@@ -231,12 +231,17 @@ class  EditItem extends Component {
             </> 
             : (this.props.reduxStore.user.admin) ?
             <>
+              <Button.Group>
+
             <Button icon onClick = {this.editComment}>
                 <Icon name='edit'/>Edit
             </Button>
-            <button onClick = {this.deleteComment}>
+            
+            <Button onClick = {this.deleteComment}>
                 <Icon name='delete'/>Delete
-            </button>
+            </Button>
+            </Button.Group>
+
             </> 
             : ''
             }

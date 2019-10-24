@@ -68,9 +68,10 @@ editIssue = (id) => {
     return(
   <>
     <h1 id="welcome">
+
       { this.props.user.username }
     </h1>
-                    <input type='text' value={this.state.issue.issues} onChange={this.handleNameChange} />
+                    <input type='text' placeholder="New common issue?" value={this.state.issue.issues} onChange={this.handleNameChange} />
                     <button onClick={this.addNewIssue}>Add New Issue</button>
       <table>
         <thead>
@@ -93,6 +94,8 @@ editIssue = (id) => {
             </tbody>
             </table>
     {/* <LogOutButton className="log-in" /> */}
+    {/* <p>{JSON.stringify( this.props.reduxStore.allData.data[1].issues)}</p> */}
+
   </>
 
 )}}

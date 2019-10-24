@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+// import { Select } from 'semantic-ui-react'
 
 
 
@@ -44,7 +45,7 @@ render() {
       <br/>
       {/* {JSON.stringify(this.props.reduxStore)} */}
       <select onChange={this.handleChange} value={this.select} required>
-          <option value="default" >-- Select Tag --</option>
+          <option value="default" >-- Select Issue --</option>
 
         {
           

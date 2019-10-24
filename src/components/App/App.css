@@ -49,9 +49,24 @@ input {
 }
 
 .car {
-    border-radius: 10px;
-    border-color: black;
-    border-style: solid;
-    height: 300px;
+    /* border-radius: 10px; */
+    /* border-color: black; */
+    /* border-style: solid; */
+    height: 1%;
+    width: 90%;
 }
 
+select {
+    border-color: black;
+    border-radius: 10px;
+}
+
+button {
+    border-color: black;
+    border-radius: 10px;
+}
+
+input {
+    border-color: black;
+    border-radius: 10px;
+}

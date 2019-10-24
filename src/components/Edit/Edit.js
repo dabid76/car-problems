@@ -95,8 +95,13 @@ componentWillMount = () => {
   render() {
     return (
       <div className="commentList">
-              <p>{JSON.stringify( this.props.reduxStore.allData.questions)}</p>
+
+          {/* <h2>{this.props.issues}</h2> */}
+
+              {/* <p>{JSON.stringify( this.props.reduxStore.allData.data)}</p> */}
               <p>{JSON.stringify( this.state.editInfo)}</p>
+              <p>{JSON.stringify( this.props.issue)}</p>
+              <p>{JSON.stringify( this.props.match.params.id)}</p>
 
             <input type='text' placeholder="Question!"  onChange={(event) => this.handleChange(event, 'questions')} />
             <input type='text' placeholder="Soluton!"  onChange={(event) => this.handleChange(event, 'solution')} />
