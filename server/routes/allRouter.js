@@ -1,6 +1,8 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+
 
 
 // GET
@@ -16,7 +18,7 @@ router.get('/', (req, res) => {
 }); // end router.GET
 
 // POST
-router.post('/newIssue', (req, res) => {
+router.post('/newIssue', rejectUnauthenticated , (req, res) => {
     const newIssue = req.body;
     const queryText = `INSERT INTO "issues"("issues")
                       VALUES ($1);`;
@@ -32,7 +34,7 @@ router.post('/newIssue', (req, res) => {
   });
 
   // POST
-router.post('/newQA', (req, res) => {
+router.post('/newQA', rejectUnauthenticated, (req, res) => {
     const newQA = req.body;
     console.log('what id is this? ', newQA);
 
@@ -63,7 +65,7 @@ router.post('/newQA', (req, res) => {
       });
   });
 
-router.delete('/delete/:id', (req, res) => {
+router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
     const queryText = `DELETE FROM "issues" WHERE "id" = $1;`;
     pool.query(queryText, [req.params.id])
       .then(() => { res.sendStatus(200); })
@@ -73,7 +75,7 @@ router.delete('/delete/:id', (req, res) => {
       });
   });
 
-router.delete('/deleteCom/:id', (req, res) => {
+router.delete('/deleteCom/:id', rejectUnauthenticated, (req, res) => {
     const queryText = `DELETE FROM "followupQuestions" WHERE "id" = $1;`;
     pool.query(queryText, [req.params.id])
       .then(() => { res.sendStatus(200); })
@@ -115,7 +117,7 @@ router.get('/questions/:id', (req, res) => {
 }); // end router.GET
 
 // PUT
-router.put('/newInfo', (req, res) => {
+router.put('/newInfo', rejectUnauthenticated, (req, res) => {
     // for (let i = 0; i < update.length; i++){
     let update = req.body;
     

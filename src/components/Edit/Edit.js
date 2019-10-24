@@ -75,6 +75,7 @@ componentWillMount = () => {
         // }) // end setState
     this.setState({editInfo:{ ...this.state.editInfo, [propertyName]: event.target.value} }, function(){
       console.log(this.state.editInfo);
+    //   this.componentWillReceiveProps();
     })
   }
   handleSubmit = (event, propertyName) =>{
@@ -103,7 +104,7 @@ componentWillMount = () => {
           {/* <h2>{this.props.issue}</h2> */}
           {
           filtered.map((item) =>
-            <p key={item.id} >{item.issues}</p>
+            <h2 key={item.id} >{item.issues}</h2>
           )
         }
 
@@ -116,7 +117,7 @@ componentWillMount = () => {
 
             <input type='text' placeholder="Question!"  onChange={(event) => this.handleChange(event, 'questions')} />
             <input type='text' placeholder="Soluton!"  onChange={(event) => this.handleChange(event, 'solution')} />
-        <button onClick = {this.handleSubmit}>Submit</button>
+        <button onClick = {this.handleSubmit}>Add</button>
           {this.props.reduxStore.allData.questions.map((item) =>{
             return (
               <EditItem key={item.questions} item = {item} />

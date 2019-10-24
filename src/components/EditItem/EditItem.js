@@ -115,6 +115,8 @@ import React, { Component } from 'react';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Button, Icon} from 'semantic-ui-react';
+import swal from 'sweetalert';
+
 
 class  EditItem extends Component {
     state = {
@@ -194,10 +196,10 @@ class  EditItem extends Component {
             // this.props.history.push(`/Edit/${this.props.match.params.id}`)
 // console.log('id?', this.props.item.issues_id)
         }
-        // this.setComment();
         // this.props.history.push(`/Edit/${this.props.match.params.id}`)
-
+        this.setComment();
         this.setState({ isEdit: !this.state.isEdit})
+        // this.setState({ questions: ''})
 
     }
     handleChange = (event) =>{
@@ -207,11 +209,32 @@ class  EditItem extends Component {
 
     }
     deleteComment = () =>{
-        console.log('btn click', this.props.item.id)
-        if(window.confirm('Are you sure you want to delete this question?')){
-            this.props.dispatch({ type: 'DELETE_COMMENT', payload:  {id: this.props.item.id , issues_id: this.props.item.issues_id}})
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            // this.props.dispatch({ type: 'DELETE_COMMENT', payload:  {id: this.props.item.id , issues_id: this.props.item.issues_id}})
+
+            if (willDelete) {
+                this.props.dispatch({ type: 'DELETE_COMMENT', payload:  {id: this.props.item.id , issues_id: this.props.item.issues_id}})
+
+              swal("Poof! Your file has been deleted!", {
+                icon: "success",
+                
+              });
+            } else {
+              swal("Your file is safe!");
+            }
+          });
+        // console.log('btn click', this.props.item.id)
+        // if(window.confirm('Are you sure you want to delete this question?')){
+            // this.props.dispatch({ type: 'DELETE_COMMENT', payload:  {id: this.props.item.id , issues_id: this.props.item.issues_id}})
         }
-    }
+    // }
     render() {
       return (
         <div className="comment">
@@ -232,11 +255,12 @@ class  EditItem extends Component {
               <Button.Group>
 
             <Button icon onClick = {this.editComment}>
-                <Icon name='edit'/>Edit
+                <Icon name='edit'color='green'/>Edit
             </Button>
-            
+            <Button.Or />
+
             <Button onClick = {this.deleteComment}>
-                <Icon name='delete'/>Delete
+                <Icon name='delete' color='red'/>Delete
             </Button>
             </Button.Group>
 

@@ -111,7 +111,7 @@ class one extends Component {
             questions: nextQ,
         })
         if( this.props.reduxStore.allData.questions.length < 1){
-      swal("Oops!", "You max out on questions, going back to issues page", "error")
+      swal("Oops!", "CAN'T FIGURE OUT THE PROBLEM, TAKE TO MECHANIC, going back to issues page", "error")
       .then(function() {
         window.location.href = '/#/WhatsWrong';
       });
@@ -156,7 +156,7 @@ class one extends Component {
             <button onClick={this.yesBtn}>Yes</button> 
             <button onClick={this.noBtn} pizza={this.state}>No</button>
             {/* <p>{JSON.stringify(this.props.reduxStore.questions.questions[0])}</p> */}
-            <p>{JSON.stringify(this.props.reduxStore.allData.questions.length)}</p>
+            {/* <p>{JSON.stringify(this.props.reduxStore.allData.questions.length)}</p> */}
 
           </div>
     

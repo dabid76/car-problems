@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button, Icon} from 'semantic-ui-react';
+
 
 class UserPage extends Component {
     
@@ -86,8 +88,19 @@ editIssue = (id) => {
                 <tr key={item.id}>
                 <td>{item.issues}</td>
                 <td>
-                <button  onClick={()=> {this.editIssue(item.id)}}>Edit</button>
-                <button  onClick={()=> {this.removeIssue(item.id)}}>Delete</button>
+                <Button.Group>
+
+<Button icon onClick={()=> {this.editIssue(item.id)}}>
+    <Icon name='edit'color='green'/>Edit
+</Button>
+<Button.Or />
+
+<Button onClick={()=> {this.removeIssue(item.id)}}>
+    <Icon name='delete' color='red'/>Delete
+</Button>
+</Button.Group>
+                {/* <button  onClick={()=> {this.editIssue(item.id)}}>Edit</button>
+                <button  onClick={()=> {this.removeIssue(item.id)}}>Delete</button> */}
                 </td>
                 </tr>
                ))}
