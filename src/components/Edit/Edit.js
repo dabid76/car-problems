@@ -83,6 +83,7 @@ componentWillMount = () => {
     console.log('btn1 getting click', this.state.editInfo.questions)
     console.log('btn2 getting click', this.props.reduxStore.user.id)
     console.log('btn2 getting click', this.props.reduxStore.allData.questions)
+    console.log('btn2 getting click', this.props.reduxStore.allData.data[1].issues)
 
     this.props.dispatch({type:'POST_NEW', payload: this.state.editInfo})
     this.setState({editInfo: ''});
@@ -93,15 +94,25 @@ componentWillMount = () => {
   handleChange = this.handleChange.bind(this)
   handleSubmit = this.handleSubmit.bind(this)
   render() {
+      //     {this.props.reduxStore.allData.questions.map((movieInfo) => {
+        let filtered = this.props.reduxStore.allData.data.filter(question => question.id == this.props.match.params.id)
+
     return (
       <div className="commentList">
 
-          {/* <h2>{this.props.issues}</h2> */}
+          {/* <h2>{this.props.issue}</h2> */}
+          {
+          filtered.map((item) =>
+            <p key={item.id} >{item.issues}</p>
+          )
+        }
 
-              {/* <p>{JSON.stringify( this.props.reduxStore.allData.data)}</p> */}
-              <p>{JSON.stringify( this.state.editInfo)}</p>
-              <p>{JSON.stringify( this.props.issue)}</p>
-              <p>{JSON.stringify( this.props.match.params.id)}</p>
+          
+              {/* <p>{JSON.stringify( this.props.reduxStore.allData)}</p> */}
+              {/* <p>{JSON.stringify( this.state.editInfo)}</p> */}
+              {/* <p>{JSON.stringify( this.props.issue[0].issues)}</p> */}
+              {/* <p>{JSON.stringify( this.props.match.params.id)}</p> */}
+              {/* {this.props.reduxStore.allData.data[0].issue} */}
 
             <input type='text' placeholder="Question!"  onChange={(event) => this.handleChange(event, 'questions')} />
             <input type='text' placeholder="Soluton!"  onChange={(event) => this.handleChange(event, 'solution')} />

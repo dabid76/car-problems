@@ -57,7 +57,7 @@ removeIssue = (id) => {
 }
 
 editIssue = (id) => {
-  console.log('edit btn click', this.props.match.params.id, id)
+  console.log('edit btn click', id, this.props.reduxStore.allData.data[1].issues)
   this.props.dispatch({type: 'GET_Q', payload: id });
 
   this.props.history.push(`/Edit/${id}`)

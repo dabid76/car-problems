@@ -165,19 +165,19 @@ class  EditItem extends Component {
     //       } 
     //      }
     
-    updateCurrent = () =>{
-        {this.props.reduxStore.allData.questions.map((movieInfo) => {
-            this.setState({
-                editInfo: {
-                    id: movieInfo.questions,
-                }
-            }) // end setState
-        })
-    }
-    }
+    // updateCurrent = () =>{
+    //     {this.props.reduxStore.allData.questions.map((movieInfo) => {
+    //         this.setState({
+    //             editInfo: {
+    //                 id: movieInfo.questions,
+    //             }
+    //         }) // end setState
+    //     })
+    // }
+    // }
 
-    setComment = () =>{
-        console.log('id?', this.props.item.id)
+    setComment = (prevProps) =>{
+        console.log('id?', this.props.item.id, this.props.reduxStore.allData.data[1].issues)
         this.setState({ questions: this.props.item.questions, id: this.props.editInfo});
     }
     editComment = () =>{
@@ -215,8 +215,6 @@ class  EditItem extends Component {
     render() {
       return (
         <div className="comment">
-        {/* <p>{JSON.stringify(this.props.reduxStore.allData.questions)}</p> */}
-
             {!this.state.isEdit ?
             <>
             <p>{this.props.item.questions}: {this.props.item.solution}</p>
