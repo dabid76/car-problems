@@ -1,4 +1,3 @@
-import 'semantic-ui-css/semantic.min.css';
 
 import React, {Component} from 'react';
 import {
@@ -25,6 +24,9 @@ import Edit from '../Edit/Edit'
 
 
 import './App.css';
+
+
+
 
 class App extends Component {
   componentDidMount () {
