@@ -1,4 +1,5 @@
 
+import 'semantic-ui-css/semantic.min.css';
 import React, {Component} from 'react';
 import {
   HashRouter as Router,
@@ -25,8 +26,14 @@ import Edit from '../Edit/Edit'
 
 import './App.css';
 
+import Menu from '../Menu/Menu';
+import styled from 'styled-components';
 
 
+const Head = styled.div`
+  position: flex;
+  z-index: 150;
+`
 
 class App extends Component {
   componentDidMount () {
@@ -39,8 +46,13 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Nav />
+        <Head>
+
+        <Menu/>
+        </Head>
+
           <Switch>
+
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Route exact from="/" to="/Home" path="/Home" component={Home} />
             {/* Visiting localhost:3000/about will show the about page.
