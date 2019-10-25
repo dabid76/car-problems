@@ -2,82 +2,33 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import swal from 'sweetalert';
 import { Button, Icon} from 'semantic-ui-react';
-// import { makeStyles } from '@material-ui/core/styles';
-// import IconButton from '@material-ui/core/IconButton';
-
 
 let nextQ;
 
-// const useStyles = makeStyles(theme => ({
-//   button: {
-//     margin: theme.spacing(1),
-//   },
-//   input: {
-//     display: 'none',
-//   },
-// }));
-
 class one extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          questions: [],
-          solution: []
-        };
-        this.noBtn = this.noBtn.bind(this);
-        this.yesBtn = this.yesBtn.bind(this);
+  constructor(props) {
+    super(props);
+      this.state = {
+        questions: [],
+        solution: []
+      };
+      this.noBtn = this.noBtn.bind(this);
+      this.yesBtn = this.yesBtn.bind(this);
+    }
 
-      }
-
-    componentDidMount = () => {
-        this.props.dispatch({type: 'GET_Q', payload: this.props.match.params.id });
-        // this.props.dispatch({type: 'GET_S', payload: this.props.match.params.id });
-
-        // this.props.dispatch({ type: 'GET_Q', payload: this.state.value });
-
-        // this.setState({
-        //     questions: this.props.reduxStore.questions.questions,
-        // })
-
-        // console.log('log', this.state.question);
-        // console.log('new question', this.props.reduxStore.questions.questions);
-        // console.log('solution', this.props.reduxStore.questions.solution);
-
- 
+  componentDidMount = () => {
+    this.props.dispatch({type: 'GET_Q', payload: this.props.match.params.id });
     this.getQuestions();
-    
     }
     getQuestions = () =>{
-        // this.props.dispatch({type: 'GET_Q', payload: this.props.match.params.id });
-        // this.props.dispatch({type: this.props.reduxStore.questions.questions});
-        // console.log('id:', this.state.id);
-        // console.log('new log', this.props.reduxStore.questions.questions);
-        // console.log('new solution', this.props.reduxStore.questions.solution);
-
-        this.setState({
-            questions: this.props.reduxStore.allData.data,
-            solution: this.props.reduxStore.allData.questions,
-        })
-        // this.noBtn = this.noBtn.bind(this);
+      this.setState({
+        questions: this.props.reduxStore.allData.data,
+        solution: this.props.reduxStore.allData.questions,
+      })
     }
 
-
-    
-    yesBtn = (props) => {
-        // console.log ('finding the solution', this.props.reduxStore.allData.solution);
-
-      //   let index = this.props.reduxStore.allData.data.map(x => {
-      //     return x.Id;
-      //   }).indexOf(1);
-      //   this.props.reduxStore.allData.questions.shift(index, 1)
-      //   this.setState({
-      //     ...this.state,
-      //     questions: nextQ,
-      // })
-        // console.log('solution', this.props.reduxStore.allData.questions[0].solution);
-
+  yesBtn = () => {
     if ( this.yesBtn == this.yesBtn ) {
-      // swal("Oops!", "Something went wrong!", "error");
       swal({
         title: this.props.reduxStore.allData.questions[0].solution,
         text: "Problem fix?",
@@ -98,99 +49,53 @@ class one extends Component {
           });
         } else {
           
-          }
+        }
       })
     }
-
-      // (window).confirm(this.props.reduxStore.allData.questions[0].solution)
-
-    // } 
-    // else if (this.noBtn = this.noBtn.bind(this)){
-
-    // }
   }
 
-  
-    noBtn = (event) => {
-
-      // event.preventDefault();
-
-        let index = this.props.reduxStore.allData.data.map(x => {
-            return x.Id;
-          }).indexOf(1);
-          this.props.reduxStore.allData.questions.shift(index, 1)
-          this.setState({
-            ...this.state,
-            questions: nextQ,
-        })
-        if( this.props.reduxStore.allData.questions.length < 1){
-      swal("Oops!", "CAN'T FIGURE OUT THE PROBLEM, TAKE TO MECHANIC, going back to issues page", "error")
-      .then(function() {
-        window.location.href = '/#/WhatsWrong';
-      });
-        }
-
-          
-          // console.log('nextQ1', this.props.reduxStore.questions.questions);
-        // console.log('nextQ', nextQ)
+  noBtn = (event) => {
+    let index = this.props.reduxStore.allData.data.map(x => {
+        return x.Id;
+      }).indexOf(1);
+      this.props.reduxStore.allData.questions.shift(index, 1)
+      this.setState({
+        ...this.state,
+        questions: nextQ,
+      })
+      if( this.props.reduxStore.allData.questions.length < 1){
+        swal("Oops!", "CAN'T FIGURE OUT THE PROBLEM, TAKE TO MECHANIC, going back to issues page", "error")
+          .then(function() {
+            window.location.href = '/#/WhatsWrong';
+          });
+      }
     }
-
     
-      render() {
-
+  render() {
     let issueQ = this.props.reduxStore.allData.questions.map((item, id) => {
         if( id == 0){
       nextQ = <h1 key={item.id}>{item.questions}</h1>
         }
-
     })
-    // let issueQA = this.props.reduxStore.questions.questions.solution.map((item, id) => {
-    //     if( id == 0){
-    // solutionToQ = <h1 key={item.id}>{item.solution}</h1>
-    //     }
-    // })
-      
-        return (
 
+  return (
 
-          
-          <div>
-              {/* <form onSubmit={this.noBtn}>
-                  <input type='submit' value="no" />
-              </form> */}
-              {/* {this.state.questions.length == 0 ? '':
-                <h1>{this.state.questions[0].questions}</h1>} */}
-            {issueQ}
-            {nextQ}
-            {/* {issueQA}
-            {solutionToQ} */}
-            <br/>
-            <br/>
-            <br/>    
-            <br/>
-            <br/>
-            <div className="yesBtn">
-            {/* <IconButton onClick={()=>this.yesBtn()} className={useStyles.button}>
-                          Yes
-                        </IconButton>
-
-                        <IconButton onClick={()=>this.noBtn()} className={useStyles.button}>
-                        No
-                        </IconButton> */}
-            <Button onClick={this.yesBtn}><Icon />Yes</Button>             
-            {/* <div className="noBtn"> */}
-            <Button onClick={this.noBtn}><Icon />No</Button>
-            {/* </div> */}
-            </div>
-            {/* <p>{JSON.stringify(this.props.reduxStore.questions.questions[0])}</p> */}
-            {/* <p>{JSON.stringify(this.props.reduxStore.allData.questions.length)}</p> */}
-
-          </div>
-    
-
-        );
-      }
-    } 
+    <div>
+      {issueQ}
+      {nextQ}
+      <br/>
+      <br/>
+      <br/>    
+      <br/>
+      <br/>
+      <div className="yesBtn">
+      <Button onClick={this.yesBtn}><Icon />Yes</Button>             
+      <Button onClick={this.noBtn}><Icon />No</Button>
+      </div>
+    </div>
+    );
+  }
+} 
   
   const mapStateToProps = reduxStore => {
     return {
