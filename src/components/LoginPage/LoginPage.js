@@ -40,7 +40,7 @@ class LoginPage extends Component {
             {this.props.errors.loginMessage}
           </h2>
         )}
-        <form onSubmit={this.login}>
+        <form onSubmit={this.login} >
           <h1>Login</h1>
           <div>
             <label htmlFor="username">
@@ -50,6 +50,7 @@ class LoginPage extends Component {
                 name="username"
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
+                
               />
             </label>
           </div>

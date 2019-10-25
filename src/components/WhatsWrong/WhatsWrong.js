@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-// import { Select } from 'semantic-ui-react'
+import { Button, Icon} from 'semantic-ui-react';
+import { makeStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
 
-
+const useStyles = makeStyles(theme => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+  input: {
+    display: 'none',
+  },
+}));
 
 class WhatsWrong extends Component {
 
@@ -45,7 +54,7 @@ render() {
       <br/>
       {/* {JSON.stringify(this.props.reduxStore)} */}
       <select onChange={this.handleChange} value={this.select} required>
-          <option value="default" >-- Select Issue --</option>
+          <option value="default" disabled selected>-- Select Issue --</option>
 
         {
           
@@ -54,7 +63,10 @@ render() {
           )
         }
       </select>
-      <button onClick={()=>{this.handleSubmit(this.props.match.params.id)}}>Submit</button>
+       {/* <IconButton onClick={()=>{this.handleSubmit(this.props.match.params.id)}}className={useStyles.button}>
+       Submit
+                        </IconButton> */}
+      <Button onClick={()=>{this.handleSubmit(this.props.match.params.id)}}><Icon name='check square' color='green'/>Submit</Button>
 
     </div>
     );

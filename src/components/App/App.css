@@ -10,11 +10,12 @@ body {
 
 form {
     background-color: #dbd5d5;
-    width: 30%;
-    height: 250px;
+    width: 60%;
+    height: 250px auto;
     margin: 20px auto;
     padding: 25px;
     border-radius: 2px;
+    text-align: center;
 }
 
 input {
@@ -67,7 +68,7 @@ button {
 }
 
 input {
-    border-color: black;
+    /* border-color: black; */
     border-radius: 10px;
 }
 
@@ -79,9 +80,34 @@ h2 {
     text-align: center;
 }
 
+/* .yesBtn {
+    margin-left: 10px;
+} */
+
+/* .issue {
+    text-align:center;
+
+} */
+
 .yesBtn {
-    margin-left: 10px;;
+    /* text-align: center; */
+    /* flex: 1; */
+    /* border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px; */
+    /* margin: 10px; */
+    /* cursor: pointer; */
+    display: flex;
+    justify-content: space-around;
+    
+  
+    /* flexDirection: 'row';
+    justifyContent: 'space-between'; */
+
 }
-.noBtn {
+/* .noBtn {
     margin-right: 10px;
-}
+} */

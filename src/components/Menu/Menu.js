@@ -8,12 +8,6 @@ import './Menu.css'
 
 
 class MenuItem extends Component {
-//   navigateToScreen = (route) => () => {
-//     const navigateAction = NavigationActions.navigate({
-//       routeName: route
-//     });
-//     this.props.navigation.dispatch(navigateAction);
-//   }
 
   state = {
     hidden: false,
@@ -47,6 +41,7 @@ class MenuItem extends Component {
             <Menu.Item as='a'>
                 <Icon name='edit' color='green'/>
             {this.props.reduxState.user.id ? 'Edit' : 'Admin Login'}
+            {/* <Icon name='sign-in' color='green'/> */}
             </Menu.Item>
             </Link>
             {/* Show the link to the info page and the logout button if the user is logged in */}
@@ -75,8 +70,9 @@ class MenuItem extends Component {
                         {/* <Header color="black" as='h2'>Car Problems?</Header> */}
                     </Link>
                     <Button onClick={()=>{this.setState({hidden: true})}}>
+                        {/* Menu */}
+                        <Icon name="sidebar" color='blue'/>
                         Menu
-                        <Icon name="angle double right"/>
                     </Button>
                 </Segment>
             </Sidebar.Pusher>

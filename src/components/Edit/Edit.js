@@ -123,10 +123,17 @@ componentWillMount = () => {
               {/* <p>{JSON.stringify( this.props.issue[0].issues)}</p> */}
               {/* <p>{JSON.stringify( this.props.match.params.id)}</p> */}
               {/* {this.props.reduxStore.allData.data[0].issue} */}
-
+              <form>
+    <p>
+      <label>Add New Question</label>
             <input type='text' placeholder="Question!"  onChange={(event) => this.handleChange(event, 'questions')} />
+            </p>
+            <p>
+      <label>Add New Soluton</label>
+      </p>
             <input type='text' placeholder="Soluton!"  onChange={(event) => this.handleChange(event, 'solution')} />
-        <button onClick = {this.handleSubmit}>Add</button>
+        <Button onClick = {this.handleSubmit}><Icon name='plus circle' color='green' align='center' />Add</Button>
+        </form>
           {this.props.reduxStore.allData.questions.map((item) =>{
             return (
               <EditItem key={item.questions} item = {item} />

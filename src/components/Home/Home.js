@@ -18,14 +18,18 @@ class Home extends Component {
 
         <div className="car">
             <div className="title">
-            <Header as='h2'>
-    <Icon name='car' />
+            <Header as='h1'>
+    {/* <Icon name='car' /> */}
     <Header.Content>Car Problems?</Header.Content>
-    <Icon name='car' />
+    {/* <Icon name='car' /> */}
   </Header>
   </div>
-            <h2>Click on a image to start</h2>
-            <img src="problems.jpg" alt="car" className="car" onClick={() => this.carPoblems()}/>
+            <h2>Click the car to start</h2>
+            {/* <i class="fa fa-arrow-right" aria-hidden="true"> */}
+            <Icon name='car'  size='massive' onClick={() => this.carPoblems()}/>
+            {/* </i> */}
+
+            {/* <img src="problems.jpg" alt="car" className="car" onClick={() => this.carPoblems()}/> */}
         </div> 
   
         );

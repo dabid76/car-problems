@@ -99,8 +99,15 @@ editIssue = (id) => {
 
       { this.props.user.username }
     </h1>
+    <form>
+    <p>
+      <label>Add New Issue</label>
+      {/* <br/> */}
                     <input type='text' placeholder="New common issue?" value={this.state.issue.issues} onChange={this.handleNameChange} />
-                    <button onClick={this.addNewIssue}>Add New Issue</button>
+                    </p>
+
+                    <Button onClick={this.addNewIssue}><Icon name='plus' color='green'/>New Issue</Button>
+                    </form>
       <table>
         <thead>
           <tr>

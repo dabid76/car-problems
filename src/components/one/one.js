@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import swal from 'sweetalert';
+import { Button, Icon} from 'semantic-ui-react';
+// import { makeStyles } from '@material-ui/core/styles';
+// import IconButton from '@material-ui/core/IconButton';
 
 
 let nextQ;
+
+// const useStyles = makeStyles(theme => ({
+//   button: {
+//     margin: theme.spacing(1),
+//   },
+//   input: {
+//     display: 'none',
+//   },
+// }));
 
 class one extends Component {
     constructor(props) {
@@ -101,7 +113,7 @@ class one extends Component {
   
     noBtn = (event) => {
 
-      event.preventDefault();
+      // event.preventDefault();
 
         let index = this.props.reduxStore.allData.data.map(x => {
             return x.Id;
@@ -142,7 +154,7 @@ class one extends Component {
 
 
           
-          <div className="movieDetailsDiv">
+          <div>
               {/* <form onSubmit={this.noBtn}>
                   <input type='submit' value="no" />
               </form> */}
@@ -152,11 +164,22 @@ class one extends Component {
             {nextQ}
             {/* {issueQA}
             {solutionToQ} */}
-            
+            <br/>
+            <br/>
+            <br/>    
+            <br/>
+            <br/>
             <div className="yesBtn">
-            <button onClick={this.yesBtn}>Yes</button>             
+            {/* <IconButton onClick={()=>this.yesBtn()} className={useStyles.button}>
+                          Yes
+                        </IconButton>
+
+                        <IconButton onClick={()=>this.noBtn()} className={useStyles.button}>
+                        No
+                        </IconButton> */}
+            <Button onClick={this.yesBtn}><Icon />Yes</Button>             
             {/* <div className="noBtn"> */}
-            <button onClick={this.noBtn} pizza={this.state}>No</button>
+            <Button onClick={this.noBtn}><Icon />No</Button>
             {/* </div> */}
             </div>
             {/* <p>{JSON.stringify(this.props.reduxStore.questions.questions[0])}</p> */}
