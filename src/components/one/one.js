@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import swal from 'sweetalert';
 
+
 let nextQ;
 
 class one extends Component {
@@ -152,9 +153,12 @@ class one extends Component {
             {/* {issueQA}
             {solutionToQ} */}
             
-
-            <button onClick={this.yesBtn}>Yes</button> 
+            <div className="yesBtn">
+            <button onClick={this.yesBtn}>Yes</button>             
+            {/* <div className="noBtn"> */}
             <button onClick={this.noBtn} pizza={this.state}>No</button>
+            {/* </div> */}
+            </div>
             {/* <p>{JSON.stringify(this.props.reduxStore.questions.questions[0])}</p> */}
             {/* <p>{JSON.stringify(this.props.reduxStore.allData.questions.length)}</p> */}
 

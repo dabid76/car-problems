@@ -271,7 +271,7 @@ class  EditItem extends Component {
             <>
             <p>{this.props.editInfo}:</p>
             <input onChange = {(event) => this.handleChange(event)} value = {this.state.questions}></input>
-            <button onClick = {this.saveComment}>Save</button>
+            <Button onClick = {this.saveComment}><Icon name='save' color='green'/>Save</Button>
             </>
             }
         </div>

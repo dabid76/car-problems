@@ -70,3 +70,18 @@ input {
     border-color: black;
     border-radius: 10px;
 }
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+.yesBtn {
+    margin-left: 10px;;
+}
+.noBtn {
+    margin-right: 10px;
+}

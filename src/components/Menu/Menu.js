@@ -38,14 +38,14 @@ class MenuItem extends Component {
         >
             <Link to="/home">
                 <Menu.Item as='a'>
-                <Icon name='home' />
+                <Icon name='home' color='orange' />
                 Home
                 {/* {this.props.reduxState.user.id ? 'Edit' : 'Admin Login'} */}
                 </Menu.Item>
             </Link>
             <Link to ="/UserPage">
             <Menu.Item as='a'>
-                <Icon name='edit' />
+                <Icon name='edit' color='green'/>
             {this.props.reduxState.user.id ? 'Edit' : 'Admin Login'}
             </Menu.Item>
             </Link>
@@ -54,13 +54,13 @@ class MenuItem extends Component {
         <>
           <Link  to="/info">
           <Menu.Item as='a'>
-          <Icon name='info' />
+          <Icon name='info' color='blue' />
             Info Page
             </Menu.Item>
           </Link>
           <Link to="/home">
                     <Menu.Item as='a' onClick={() => this.props.dispatch({ type: 'LOGOUT' })} >
-                        <Icon name='log out'/>
+                        <Icon name='log out' color='purple'/>
                         Logout
                     </Menu.Item>
                 </Link>

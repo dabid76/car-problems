@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import { Header, Icon } from 'semantic-ui-react'
+
 
 class Home extends Component {
 
@@ -15,8 +17,14 @@ class Home extends Component {
     return (
 
         <div className="car">
-            {/* <h1>Image</h1> */}
-            <h1>click on a image to start</h1>
+            <div className="title">
+            <Header as='h2'>
+    <Icon name='car' />
+    <Header.Content>Car Problems?</Header.Content>
+    <Icon name='car' />
+  </Header>
+  </div>
+            <h2>Click on a image to start</h2>
             <img src="problems.jpg" alt="car" className="car" onClick={() => this.carPoblems()}/>
         </div> 
   

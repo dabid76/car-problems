@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Icon} from 'semantic-ui-react';
+import swal from 'sweetalert';
 
 
 class UserPage extends Component {
@@ -52,10 +53,35 @@ removeIssue = (id) => {
   // event.preventDefault();
   console.log(id);
 
-  this.props.dispatch({
-      type: 'DEL_DATA',
-      payload: id
+  swal({
+    title: "Are you sure?",
+    text: "Once deleted, you will not be able to recover this file!",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+  .then((willDelete) => {
+    // this.props.dispatch({ type: 'DELETE_COMMENT', payload:  {id: this.props.item.id , issues_id: this.props.item.issues_id}})
+
+    if (willDelete) {
+      this.props.dispatch({
+        type: 'DEL_DATA',
+        payload: id
+    });
+
+      swal("Poof! Your file has been deleted!", {
+        icon: "success",
+        
+      });
+    } else {
+      swal("Your file is safe!");
+    }
   });
+
+  // this.props.dispatch({
+  //     type: 'DEL_DATA',
+  //     payload: id
+  // });
 }
 
 editIssue = (id) => {
@@ -96,7 +122,7 @@ editIssue = (id) => {
 <Button.Or />
 
 <Button onClick={()=> {this.removeIssue(item.id)}}>
-    <Icon name='delete' color='red'/>Delete
+    <Icon name='trash' color='red'/>Delete
 </Button>
 </Button.Group>
                 {/* <button  onClick={()=> {this.editIssue(item.id)}}>Edit</button>

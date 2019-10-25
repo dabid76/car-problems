@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EditItem from '../EditItem/EditItem';
+import { Button, Icon} from 'semantic-ui-react';
+
 
 class  Edit extends Component {
 
@@ -92,6 +94,13 @@ componentWillMount = () => {
 
     // this.commentInput.value = '';
   }
+
+  backBtn = () => {
+    this.props.history.push(`/UserPage`)
+
+  }
+ 
+  
   handleChange = this.handleChange.bind(this)
   handleSubmit = this.handleSubmit.bind(this)
   render() {
@@ -123,6 +132,13 @@ componentWillMount = () => {
               <EditItem key={item.questions} item = {item} />
             )
           })}
+        <br/><br/>
+        <Button animated onClick = {this.backBtn}>
+        <Button.Content visible>Back</Button.Content>
+        <Button.Content hidden>
+            <Icon name='arrow left' />
+        </Button.Content>
+            </Button>
       </div>
     );
   }
