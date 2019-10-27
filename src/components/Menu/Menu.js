@@ -39,15 +39,21 @@ class MenuItem extends Component {
                     <Icon name='edit' color='green'/>
                 {this.props.reduxState.user.id ? 'Edit' : 'Admin Login'}
                 </Menu.Item>
-                    </Link>
-            {this.props.reduxState.user.id && (
-        <>
-            <Link  to="/info">
+            </Link>
+                    <Link  to="/info">
                 <Menu.Item as='a'>
                     <Icon name='info' color='blue' />
                         Info Page
                 </Menu.Item>
             </Link>
+            {this.props.reduxState.user.id && (
+        <>
+            {/* <Link  to="/info">
+                <Menu.Item as='a'>
+                    <Icon name='info' color='blue' />
+                        Info Page
+                </Menu.Item>
+            </Link> */}
             <Link to="/home">
                 <Menu.Item as='a' onClick={() => this.props.dispatch({ type: 'LOGOUT' })} >
                     <Icon name='log out' color='purple'/>

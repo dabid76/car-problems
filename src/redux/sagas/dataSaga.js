@@ -23,8 +23,6 @@ function* postNew(action){
     yield axios.post('/allData/newQA', action.payload);
     yield put({type: 'GET_Q', payload: action.payload.id})
 
-    // yield getQ(action);
-    // yield put({type: 'GET_Q' })
   }catch(error){
     console.log('error psoting new question', error);
   }
@@ -40,14 +38,12 @@ function* newInfo(action){
       yield console.log('what is?: ')
       yield put({type: 'GET_Q', payload: action.payload.issues_id})
 
-      // yield getData();
-      // yield getQ(action);
     }catch(error){
       console.log('error updating new info', error);
     } // end try
   } // end newInfo saga
 
-function* postIssue(action){
+  function* postIssue(action){
     try{
       yield axios.post('/allData/newIssue/', action.payload);
       yield put({type: 'GET_DATA'})
@@ -86,10 +82,10 @@ function* getData(){
 
   function* getQ(action){
     try {
-        console.log('action', action.payload);
-        
-        let response = yield axios.get(`/allData/questions/${action.payload}`)
-        yield put({type: 'SET_Q', payload: response.data})
+      console.log('action', action.payload);
+      
+      let response = yield axios.get(`/allData/questions/${action.payload}`)
+      yield put({type: 'SET_Q', payload: response.data})
     } catch (error) {
         console.log('error with getting the questions', error); 
     } // end try

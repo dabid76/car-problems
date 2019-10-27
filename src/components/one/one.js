@@ -89,8 +89,8 @@ class one extends Component {
       <br/>
       <br/>
       <div className="yesBtn">
-      <Button onClick={this.yesBtn}><Icon />Yes</Button>             
-      <Button onClick={this.noBtn}><Icon />No</Button>
+      <Button onClick={this.yesBtn}><Icon name='thumbs up' size='big' color='black' />Yes</Button>             
+      <Button onClick={this.noBtn}><Icon name='thumbs down' size='big' color='black' />No</Button>
       </div>
     </div>
     );

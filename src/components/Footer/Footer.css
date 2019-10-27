@@ -1,3 +1,14 @@
 footer {
     margin-top: 80px;
+    /* background:
+    radial-gradient(
+        farthest-side at bottom left,
+        rgb(100, 62, 128), 
+        transparent
+      ),
+      radial-gradient(
+        farthest-corner at bottom right,
+        rgb(121, 9, 131), 
+        transparent 400px
+      ); */
 }

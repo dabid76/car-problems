@@ -33,7 +33,7 @@ render() {
         What's Wrong?
         </h1>
       <br/>
-      <select onChange={this.handleChange} value={this.select} required>
+      <select className="select-css" onChange={this.handleChange} value={this.select} required>
           <option value="default" disabled selected>-- Select Issue --</option>
 
         {  

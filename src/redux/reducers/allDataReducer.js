@@ -20,15 +20,6 @@ const questions = (state = [], action) => {
     } // end switch
 } // end genres
 
-// const newQS = (state = [], action) => {
-//     switch (action.type) {
-//         case 'EDIT_INFO':
-//             return [...state, {[action.payload.id]: action.payload.value}]
-//         default:
-//             return state;
-//     } // end switch
-// } // end genres
-
 export default combineReducers({
     data,
     questions,

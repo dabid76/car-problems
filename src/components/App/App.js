@@ -29,6 +29,11 @@ import './App.css';
 import Menu from '../Menu/Menu';
 import styled from 'styled-components';
 
+// import body from '../../body/body/body.sketch';
+
+// import P5Wrapper from 'react-p5-wrapper';
+
+
 
 const Head = styled.div`
   position: flex;
@@ -44,15 +49,17 @@ class App extends Component {
 
     
     return (
+      
       <Router>
         <div>
         <Head>
 
         <Menu/>
+        {/* <P5Wrapper sketch={body}></P5Wrapper> */}
         </Head>
+        {/* <P5Wrapper sketch={body}></P5Wrapper> */}
 
           <Switch>
-
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Route exact from="/" to="/Home" path="/Home" component={Home} />
             {/* Visiting localhost:3000/about will show the about page.
@@ -88,7 +95,7 @@ class App extends Component {
             />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
-            <ProtectedRoute
+            <Route
               exact
               path="/info"
               component={InfoPage}

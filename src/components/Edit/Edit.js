@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import EditItem from '../EditItem/EditItem';
 import { Button, Icon} from 'semantic-ui-react';
 
-
 class  Edit extends Component {
 
   state = {
@@ -22,6 +21,7 @@ class  Edit extends Component {
       })
     }
   }
+
   componentWillReceiveProps = () => {
     {this.props.reduxStore.allData.questions.map((movieInfo) => {
       this.setState({
@@ -30,6 +30,7 @@ class  Edit extends Component {
       }}) // end setState
     })}    
   }
+
   componentWillMount = () => {
     this.props.dispatch({ type: 'GET_DATA' });
       {this.props.reduxStore.allData.questions.map((movieInfo) => {
@@ -41,7 +42,6 @@ class  Edit extends Component {
     }}
 
   handleChange = (event, propertyName) =>{
-
     this.setState({editInfo:{ ...this.state.editInfo, [propertyName]: event.target.value} }, function(){
       console.log(this.state.editInfo);
     })
