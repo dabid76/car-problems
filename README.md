@@ -20,8 +20,8 @@ A full list of dependencies can be found in package.json
 
 
 ## Usage
-1: User will be able to pick from one of the main car problems.
-2: User will have to answer to the follow-up questions with 'yes' or 'no' so the app can diagnosed the problem.
+1: User will be able to pick from one of the main car problems. 
+2: User will have to answer to the follow-up questions with 'yes' or 'no' so the app can diagnosed the problem. 
 3: Ones the user clicks 'yes' it will give you the solution to the main problem.
 
 
