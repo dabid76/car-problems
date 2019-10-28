@@ -7,8 +7,10 @@ import React from 'react';
 
 const InfoPage = () => (
   <div>
+    <h1>Info About App</h1>
     <p>
-      Info Page
+    Created an app that would allow users to answer simple questions, which then will direct them to
+additional information. The final determination will help them with the problems that they have.
     </p>
   </div>
 );
