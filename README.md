@@ -19,8 +19,10 @@ I had a couple problems with this project mainly getting it in sync with the dat
 A full list of dependencies can be found in package.json
 
 
-## Installation
-1: Create a database see "data.sql".
+## Usage
+1: User will be able to pick from one of the main car problems.
+2: User will have to answer to the follow-up questions with 'yes' or 'no' so the app can diagnosed the problem.
+3: Ones the user clicks 'yes' it will give you the solution to the main problem.
 
 
 
