@@ -12,26 +12,17 @@ I had a couple problems with this project mainly getting it in sync with the dat
 - [Node.js](https://nodejs.org/en/)
 - [PostrgeSQL](https://www.postgresql.org/)
 - [Nodemon](https://nodemon.io/)
-- [Axios]
-- [React.js]
-- [Pg]
+- Axios
+- React.js
+- Pg
 
 A full list of dependencies can be found in package.json
 
 
-## Create database and table
+## Installation
+1: Create a database see "data.sql".
 
-Create a new database called `prime_app` and create a `user` table:
 
-```SQL
-CREATE TABLE "user" (
-    "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
-);
-```
-
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
 
 ## Development Setup Instructions
 
