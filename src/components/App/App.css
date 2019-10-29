@@ -24,6 +24,16 @@ form {
     text-align: center;
 }
 
+.editQ {
+    background-color: #dbd5d5;
+    width: 60%;
+    height: 250px auto;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 2px;
+    text-align: center;
+}
+
 input {
     margin: 5px;
     margin-bottom: 10px;

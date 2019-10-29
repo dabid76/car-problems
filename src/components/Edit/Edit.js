@@ -77,18 +77,18 @@ class  Edit extends Component {
         <h2 key={item.id} >{item.issues}</h2>
         )
       }
-      <form>
-        <p>
-          <label>Add New Question</label>
+      {/* <form className="editQ"> */}
+        {/* <p> */}
+          {/* <label>Add New Question</label> */}
             <input type='text' placeholder="Question!"  onChange={(event) => this.handleChange(event, 'questions')} />
-        </p>
-        <p>
-          <label>Add New Soluton</label>
-        </p>
+        {/* </p> */}
+        {/* <p> */}
+          {/* <label>Add New Soluton</label> */}
+        {/* </p> */}
             <input type='text' placeholder="Soluton!"  onChange={(event) => this.handleChange(event, 'solution')} />
 
         <Button onClick = {this.handleSubmit}><Icon name='plus circle' color='green' align='center' />Add</Button>
-      </form>
+      {/* </form> */}
 
         {this.props.reduxStore.allData.questions.map((item) =>{
           return (

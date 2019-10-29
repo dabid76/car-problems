@@ -34,7 +34,7 @@ render() {
         </h1>
       <br/>
       <select className="select-css" onChange={this.handleChange} value={this.select} required>
-          <option value="default" disabled selected>-- Select Issue --</option>
+          <option defaultValue>-- Select Issue --</option>
 
         {  
           this.props.reduxStore.allData.data.map(item =>
