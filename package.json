@@ -23,7 +23,7 @@
     "react-bootstrap": "^1.0.0-beta.14",
     "react-bootstrap-sidebar": "0.0.1",
     "react-bootstrap-sweetalert": "^4.4.1",
-    "react-dom": "^16.8.6",
+    "react-dom": "^16.11.0",
     "react-key-index": "^0.1.1",
     "react-p5-wrapper": "^2.0.0",
     "react-redux": "^6.0.1",
