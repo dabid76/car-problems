@@ -14,7 +14,7 @@ class Home extends Component {
         <div className="car">
             <div className="title">
             <Header as='h1'>
-                <Header.Content>Car Problems?</Header.Content>
+                <Header.Content>Car Problems????</Header.Content>
             </Header>
             </div>
             <h2>Click the car to start</h2>
