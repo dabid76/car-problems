@@ -34,24 +34,24 @@ render() {
         </h1>
       <br/>
       {JSON.stringify(this.props.reduxState)}
-      {/* <select className="select-css" onChange={this.handleChange} value={this.select} required>
+      <select className="select-css" onChange={this.handleChange} value={this.select} required>
           <option defaultValue>-- Select Issue --</option>
 
-        {  this.props.reduxStore.allData.data &&
-            this.props.reduxStore.allData.data.map(item =>
+        {  this.props.reduxState.allData.data &&
+            this.props.reduxState.allData.data.map(item =>
               <option key={item.id} value={item.id}>{item.issues}</option>
             )
         }
-      </select> */}
+      </select>
       <Button onClick={()=>{this.handleSubmit(this.props.match.params.id)}}><Icon name='check square' color='green'/>Submit</Button>
     </div>
     );
   }
 } 
   
-  const mapStateToProps = reduxStore => {
+  const mapStateToProps = reduxState => {
     return {
-        reduxStore
+      reduxState
     }; // end return
   }; // end mapStateToProps
   
