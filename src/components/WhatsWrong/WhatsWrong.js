@@ -33,8 +33,8 @@ render() {
         What's Wrong?
         </h1>
       <br/>
-      {JSON.stringify(this.props.reduxStore.allData)}
-      {/* <select className="select-css" onChange={this.handleChange} value={this.select} required>
+      {/* {JSON.stringify(this.props.reduxStore.allData)} */}
+      <select className="select-css" onChange={this.handleChange} value={this.select} required>
           <option defaultValue>-- Select Issue --</option>
 
         {  this.props.reduxStore.allData.data &&
@@ -42,7 +42,7 @@ render() {
               <option key={item.id} value={item.id}>{item.issues}</option>
             )
         }
-      </select> */}
+      </select>
       <Button onClick={()=>{this.handleSubmit(this.props.match.params.id)}}><Icon name='check square' color='green'/>Submit</Button>
     </div>
     );
