@@ -33,12 +33,11 @@ render() {
         What's Wrong?
         </h1>
       <br/>
-      {JSON.stringify(this.props.reduxState)}
       <select className="select-css" onChange={this.handleChange} value={this.select} required>
           <option defaultValue>-- Select Issue --</option>
 
-        {  this.props.reduxState.allData.data &&
-            this.props.reduxState.allData.data.map(item =>
+        {  this.props.reduxStore.allData.data &&
+            this.props.reduxStore.allData.data.map(item =>
               <option key={item.id} value={item.id}>{item.issues}</option>
             )
         }
@@ -49,9 +48,9 @@ render() {
   }
 } 
   
-  const mapStateToProps = reduxState => {
+  const mapStateToProps = reduxStore => {
     return {
-      reduxState
+        reduxStore
     }; // end return
   }; // end mapStateToProps
   
