@@ -21,7 +21,7 @@ const questions = (state = [], action) => {
 } // end genres
 
 export default combineReducers({
-    data,
+    caData,
     questions,
     // newQS
   });
