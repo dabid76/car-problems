@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 // Used to store movies returned from the server
-const data = (state = [], action) => {
+const caData = (state = [], action) => {
     switch (action.type) {
         case 'ALL_DATA':
             return action.payload;
