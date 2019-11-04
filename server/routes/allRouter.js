@@ -5,6 +5,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 // GET
 router.get('/', (req, res) => {
+    console.log('got to /allData')
     pool.query(`SELECT * FROM "issues" ORDER BY "id" ASC;`)
         .then((result) => {
             console.log('Result', result)
