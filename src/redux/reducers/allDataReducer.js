@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 // Used to store movies returned from the server
-const caData = (state = [], action) => {
+const carData = (state = [], action) => {
     switch (action.type) {
         case 'ALL_DATA':
             return action.payload;
@@ -21,7 +21,7 @@ const questions = (state = [], action) => {
 } // end genres
 
 export default combineReducers({
-    caData,
+    carData,
     questions,
     // newQS
   });

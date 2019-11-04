@@ -33,7 +33,7 @@ render() {
         What's Wrong?
         </h1>
       <br/>
-      {JSON.stringify(this.props.reduxStore.allData)}
+      {JSON.stringify(this.props.reduxStore)}
       {/* <select className="select-css" onChange={this.handleChange} value={this.select} required>
           <option defaultValue>-- Select Issue --</option>
 
