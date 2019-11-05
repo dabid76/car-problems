@@ -35,7 +35,7 @@ render() {
       <br/>
       {/* {JSON.stringify(this.props.reduxStore)} */}
       <select className="select-css" onChange={this.handleChange} value={this.select} required>
-          <option defaultValue>-- Select Issue --</option>
+          <option selected="true" disabled="disabled">-- Select Issue --</option>
 
         {  this.props.reduxStore.allData.data &&
             this.props.reduxStore.allData.data.map(item =>
