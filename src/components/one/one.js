@@ -45,7 +45,7 @@ class one extends Component {
             text: 'Going to home page',
             icon: 'success'
           }).then(function() {
-            window.location.href = '/#/Home';
+            window.location.href = '/#/home';
           });
         } else {
           
